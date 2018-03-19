@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sdk.mobfox.com.mobfoxdemo.URLBanner">
+
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:weightSum="32"-->
+        <!--android:id="@+id/llTop"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentStart="true">-->
+
+
+    <!--</LinearLayout>-->
+
+
+
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="70dp"
+        android:text="Creative URL" />
+
+    <EditText
+        android:id="@+id/creativeUrl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@id/creativeUrl"
+        android:maxLines="2"
+        android:ellipsize="start"
+        android:gravity="center_horizontal"
+        android:hint="URL"
+        android:inputType="textPersonName"
+        android:text="https://api.datashim.com/hippy-Huntington" />
+
+    <Spinner
+        android:id="@+id/bnrsize_spinner"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/server_spinner"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/qrcode" />
+
+    <Button
+        android:id="@+id/qrcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Creative URL QRCode" />
+
+    <Button
+        android:id="@+id/loadurl_bnr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:text="load url banner" />
+
+    <ScrollView
+        android:id="@+id/urlbnr_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_below="@+id/bnrsize_spinner"
+        android:layout_centerHorizontal="true"
+        android:verticalScrollbarPosition="left"
+        android:fadeScrollbars="false">
+
+        <LinearLayout
+            android:id="@+id/banner_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:weightSum="32" />
+    </ScrollView>
+
+    <!--<Button-->
+        <!--android:id="@+id/button4"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_alignParentRight="true"-->
+        <!--android:layout_below="@+id/qrcode"-->
+        <!--android:layout_marginTop="36dp"-->
+        <!--android:text="300X250" />-->
+
+    <!--<Button-->
+        <!--android:id="@+id/button3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignBaseline="@+id/button4"-->
+        <!--android:layout_alignBottom="@+id/button4"-->
+        <!--android:layout_toLeftOf="@+id/button4"-->
+        <!--android:layout_toStartOf="@+id/button4"-->
+        <!--android:text="320X50" />-->
+
+
+</RelativeLayout>
