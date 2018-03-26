@@ -37,6 +37,10 @@ public class MobfoxInterstitial extends Activity implements AdapterView.OnItemSe
     public Button load;
     public Button qrcode;
     public TextView logText;
+    public String server="";
+
+    MobfoxRequestParams mfrp;
+
 
     float floor = -1;
 
@@ -53,6 +57,9 @@ public class MobfoxInterstitial extends Activity implements AdapterView.OnItemSe
         final RelativeLayout layout = (RelativeLayout) findViewById(R.id.dummy_container);
 
         c = getApplicationContext();
+
+        mfrp = new MobfoxRequestParams();
+
 
         Spinner serverSpinner = (Spinner) findViewById(R.id.server_spinner);
 
@@ -74,10 +81,21 @@ public class MobfoxInterstitial extends Activity implements AdapterView.OnItemSe
                 if (floorText.getText().length() > 0){
                     floor = Float.parseFloat(floorText.getText().toString());
                     if(floor > 0){
-                        MobfoxRequestParams mfrp = new MobfoxRequestParams();
                         mfrp.setParam(MobfoxRequestParams.R_FLOOR,floor);
                         interAd.setRequestParams(mfrp);
                     }
+                }
+                if (!server.equals("")){
+                    if (server.equals("http://nvirginia-my.mobfox.com")){
+                        mfrp.setParam("debugResponseURL", server);
+                        interAd.setRequestParams(mfrp);
+                    }
+                    if (server.equals("http://tokyo-my.mobfox.com")){
+                        mfrp.setParam("debugResponseURL", server);
+                        interAd.setRequestParams(mfrp);
+
+                    }
+
                 }
 
                 interAd.setListener(new InterstitialListener() {
@@ -133,14 +151,6 @@ public class MobfoxInterstitial extends Activity implements AdapterView.OnItemSe
                 startActivityForResult(intent, BARCODE_READER_REQUEST_CODE);
             }
         });
-///
-///        floorBtn = (Button) findViewById(R.id.floor);
-///        floorBtn.setOnClickListener(new View.OnClickListener() {
-///            @Override
-///            public void onClick(View view) {
-///                floor = 4.0f;
-///           }
-///       });
 
     }
 
@@ -150,8 +160,6 @@ public class MobfoxInterstitial extends Activity implements AdapterView.OnItemSe
             if (resultCode == CommonStatusCodes.SUCCESS) {
                 if (data != null) {
                     Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
-                    // mResultTextView.setText(barcode.displayValue);
-                    //invh = barcode.displayValue;
                     invhText.setText(barcode.displayValue);
                 }
             }
@@ -167,13 +175,16 @@ public class MobfoxInterstitial extends Activity implements AdapterView.OnItemSe
 //        int parentId = parent.getId();
 
         switch (spinnerId) {
-            case "NorthVir":
+            case "North Virginia":
                 //set server to north virginia
-                Toast.makeText(c, "North Virginia", Toast.LENGTH_SHORT).show();
+                server = "http://nvirginia-my.mobfox.com";
+//                Toast.makeText(c, "North Virginia", Toast.LENGTH_SHORT).show();
                 break;
             case "Tokyo":
                 //set server to tokyo
-                Toast.makeText(c, "Tokyo", Toast.LENGTH_SHORT).show();
+                server = "http://tokyo-my.mobfox.com";
+
+//                Toast.makeText(c, "Tokyo", Toast.LENGTH_SHORT).show();
                 break;
         }
 

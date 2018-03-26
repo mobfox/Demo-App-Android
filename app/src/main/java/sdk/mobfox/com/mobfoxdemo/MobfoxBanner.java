@@ -45,7 +45,7 @@ public class MobfoxBanner extends Activity implements AdapterView.OnItemSelected
 
     float floor = -1;
     int width,height = 0;
-    String server;
+    String server="";
 
     BannerTag banner;
     LinearLayout view;
@@ -59,14 +59,9 @@ public class MobfoxBanner extends Activity implements AdapterView.OnItemSelected
 
         c = getApplicationContext();
 
-
         requestParams = new MobfoxRequestParams();
 
         view        = (LinearLayout)findViewById(R.id.banner_container);
-//        mainView = findViewById(R.id.mainview);
-//        View root = mainView.getRootView();
-//        root.setBackground(Color.WHITE);
-
 
         floorText   = (EditText)    findViewById(R.id.floor_etext);
         logText     = (TextView)    findViewById(R.id.logText);
@@ -79,17 +74,6 @@ public class MobfoxBanner extends Activity implements AdapterView.OnItemSelected
 
         invhText.setText(invh);
 
-//        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-
-
-
-///        size300 = (Button) findViewById(R.id.button2);
-///        size320 = (Button) findViewById(R.id.button3);
-///        size250 = (Button) findViewById(R.id.button4);
-
-///        size300.setOnClickListener(new SizeListener(300, SizeUtils.DEFAULT_BANNER_HEIGHT));
-///        size320.setOnClickListener(new SizeListener(SizeUtils.DEFAULT_BANNER_WIDTH, SizeUtils.DEFAULT_BANNER_HEIGHT));
-///        size250.setOnClickListener(new SizeListener(300, 250));
 
         qrcode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,6 +163,20 @@ public class MobfoxBanner extends Activity implements AdapterView.OnItemSelected
                 }
             }
 
+            if (!server.equals("")){
+                if (server.equals("http://nvirginia-my.mobfox.com")){
+                    requestParams.setParam("debugResponseURL", server);
+                    banner.setParams(requestParams);
+                }
+                if (server.equals("http://tokyo-my.mobfox.com")){
+                    requestParams.setParam("debugResponseURL", server);
+                    banner.setParams(requestParams);
+
+                }
+
+            }
+
+
 
             banner.load();
         }
@@ -264,13 +262,18 @@ public class MobfoxBanner extends Activity implements AdapterView.OnItemSelected
                 width=0;
                 height=0;
                 break;
-            case "NorthVir":
+            case "Server":
+                server="";
+                break;
+            case "North Virginia":
                 //set server to north virginia
-                Toast.makeText(c,"North Virginia",Toast.LENGTH_SHORT).show();
+                server = "http://nvirginia-my.mobfox.com";
+//                Toast.makeText(c,"North Virginia",Toast.LENGTH_SHORT).show();
                 break;
             case "Tokyo":
                 //set server to tokyo
-                Toast.makeText(c,"Tokyo",Toast.LENGTH_SHORT).show();
+                server = "http://tokyo-my.mobfox.com";
+//                Toast.makeText(c,"Tokyo",Toast.LENGTH_SHORT).show();
                 break;
         }
 
