@@ -1,6 +1,6 @@
 # MobFox Demo App
 
-This is a demo Android app for demand partners to test their creative view ability.
+This is a demo Android app for demand partners to test their Ads creative.
 
 
 ## MobFox Banner
