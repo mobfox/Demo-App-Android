@@ -42,6 +42,6 @@ could be caused by a low fill rate at your geo location, too high floor price, o
 - "timeout" - Meaning the connection was interrupted during the ad loading or that the ad takes too long to load due to slow internet connection.
 - {"e3":{corssDoman":true ...} -Meaning that the request did not hit our servers at all. Check your internet connection/VPN/proxy.
 
-## Demo video
+## Demo Video
 A video demonstrating how to use the app: 
 https://youtu.be/p6tX6HeKjyI
