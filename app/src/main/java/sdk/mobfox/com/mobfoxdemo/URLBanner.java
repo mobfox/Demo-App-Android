@@ -43,7 +43,7 @@ public class URLBanner extends Activity implements AdapterView.OnItemSelectedLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_urlbanner);
-        getWindow().getDecorView().setBackgroundColor(Color.rgb(144,202,249));
+//        getWindow().getDecorView().setBackgroundColor(Color.rgb(144,202,249));
 
 
         view = (LinearLayout) findViewById(R.id.banner_container);

@@ -4,40 +4,6 @@
     android:layout_height="match_parent"
     android:id="@+id/mainview">
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/llTop"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentEnd="true"-->
-        <!--android:layout_alignParentRight="true"-->
-        <!--android:layout_alignParentTop="true"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:weightSum="32">-->
-
-        <!--<Button-->
-            <!--android:id="@+id/button2"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignParentLeft="true"-->
-            <!--android:layout_alignParentStart="true"-->
-            <!--android:text="300X50" />-->
-
-        <!--<Button-->
-            <!--android:id="@+id/button3"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignEnd="@+id/button2"-->
-            <!--android:layout_alignRight="@+id/button2"-->
-            <!--android:text="320X50" />-->
-
-        <!--<Button-->
-            <!--android:id="@+id/button4"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_alignLeft="@+id/button3"-->
-            <!--android:layout_alignStart="@+id/button3"-->
-            <!--android:text="300X250" />-->
-    <!--</LinearLayout>-->
 
     <Button
         android:id="@+id/qrcode"

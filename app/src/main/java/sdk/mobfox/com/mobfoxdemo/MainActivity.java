@@ -52,7 +52,7 @@ public class MainActivity extends ListActivity {
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getListView().setBackgroundColor(Color.rgb(144,202,249));
+//        getListView().setBackgroundColor(Color.rgb(144,202,249));
 
 
         setListAdapter(new ArrayAdapter<>(myContext, android.R.layout.simple_expandable_list_item_1, classes));

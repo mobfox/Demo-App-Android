@@ -32,7 +32,7 @@ public class URLInterstitial extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_urlinterstitial);
-        getWindow().getDecorView().setBackgroundColor(Color.rgb(144,202,249));
+//        getWindow().getDecorView().setBackgroundColor(Color.rgb(144,202,249));
 
 
         final RelativeLayout layout = (RelativeLayout) findViewById(R.id.dummy_container);

@@ -62,7 +62,7 @@ public class MobfoxNative extends Activity implements AdapterView.OnItemSelected
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_native_ad);
-        getWindow().getDecorView().setBackgroundColor(Color.rgb(144,202,249));
+//        getWindow().getDecorView().setBackgroundColor(Color.rgb(144,202,249));
 
 
         self = this;
