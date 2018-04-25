@@ -9,8 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.CommonStatusCodes;
+import com.google.android.gms.vision.barcode.Barcode;
 import com.mobfox.sdk.interstitial.Interstitial;
 import com.mobfox.sdk.interstitial.InterstitialListener;
 import com.mobfox.sdk.networking.MobfoxRequestParams;
@@ -98,5 +101,19 @@ public class URLInterstitial extends Activity {
             }
         });
 
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == BARCODE_READER_REQUEST_CODE) {
+            if (resultCode == CommonStatusCodes.SUCCESS) {
+                if (data != null) {
+                    Barcode barcode = data.getParcelableExtra(BarcodeCaptureActivity.BarcodeObject);
+                    // mResultTextView.setText(barcode.displayValue);
+                    vast_url_et.setText(barcode.displayValue, TextView.BufferType.EDITABLE);
+                }
+            }
+        }
+        else super.onActivityResult(requestCode, resultCode, data);
     }
 }
