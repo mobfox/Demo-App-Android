@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="MAT-moat-mobile-app-kit:@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MAT-moat-mobile-app-kit.aar/700b8ed2620df4102fe51f749d97b30c/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MAT-moat-mobile-app-kit.aar/700b8ed2620df4102fe51f749d97b30c/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MAT-moat-mobile-app-kit.aar/695528b26523b15ae653a59100d44bea/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MAT-moat-mobile-app-kit.aar/695528b26523b15ae653a59100d44bea/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
