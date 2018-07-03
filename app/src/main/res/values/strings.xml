@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">MobFoxDemo</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="action_settings">Settings</string>
+
+
     <string-array name="bannersizes">
         <item>320x50</item>
         <item>300x250</item>
@@ -100,5 +106,6 @@
     <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
     <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
+    <string name="inventory_hash_qrcode"><b>Scan QR Code</b></string>
 
 </resources>

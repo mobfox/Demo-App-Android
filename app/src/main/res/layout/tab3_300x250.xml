@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/qrcode"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/or_divider"
+        android:layout_below="@+id/banner250"
+        android:background="@drawable/roundedgreyrect"
+        android:text="@string/inventory_hash_qrcode"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:layout_marginTop="36dp"
+        />
+
+    <com.mobfox.sdk.banner.Banner
+        android:id="@+id/banner250"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/qrcode"
+        android:layout_marginTop="20dp"
+        mobfox:inventory="fe96717d9875b9da4339ea5367eff1ec">
+
+    </com.mobfox.sdk.banner.Banner>
+
+    <EditText
+        android:id="@+id/invhText"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@+id/or_divider"
+        android:layout_below="@+id/or_divider"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/roundedwhiterect"
+        android:ellipsize="start"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="Inventory Hash"
+        android:inputType="textPersonName"
+        android:paddingVertical="14sp"
+        android:textAlignment="center"
+        android:textSize="15dp" />
+
+    <Spinner
+        android:id="@+id/server_spinner"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/banner250"
+        android:layout_below="@+id/banner250" />
+
+
+    <Button
+        android:id="@+id/load_btn"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/invhText"
+        android:layout_marginBottom="13dp"
+        android:background="@drawable/roundedbluerect"
+        android:text="Load Your Ad"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/logText"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="45dp"
+        android:ellipsize="end"
+        android:ems="10"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/or_divider"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/qrcode"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="13dp"
+        android:background="@drawable/linedivider"
+        android:paddingTop="5dp"
+        android:text="OR"
+        android:textAlignment="center"
+        android:textColor="#3ca6ff" />
+
+    <EditText
+        android:id="@+id/floor_etext"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/qrcode"
+        android:layout_below="@+id/banner250"
+        android:ellipsize="start"
+        android:ems="10"
+        android:gravity="center_horizontal"
+        android:hint="Floor"
+        android:inputType="numberDecimal" />
+
+</RelativeLayout>
