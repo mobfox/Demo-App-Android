@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,6 +20,9 @@ import com.google.android.gms.vision.barcode.Barcode;
 import com.mobfox.sdk.interstitial.Interstitial;
 import com.mobfox.sdk.interstitial.InterstitialListener;
 import com.mobfox.sdk.networking.MobfoxRequestParams;
+import com.mopub.common.MoPub;
+import com.mopub.common.SdkConfiguration;
+import com.mopub.common.SdkInitializationListener;
 
 import sdk.mobfox.com.mobfox_app.barcode.BarcodeCaptureActivity;
 
@@ -56,6 +60,12 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
 
 //        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.dummy_container);
 
+        if (!MoPub.isSdkInitialized()){
+            SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder("4ad212b1d0104c5998b288e7a8e35967")
+                    .build();
+            MoPub.initializeSdk(this,sdkConfiguration, initSdkListener());
+        }
+
         c = this;
 
         mfrp = new MobfoxRequestParams();
@@ -66,6 +76,16 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
         logText     = (TextView) findViewById(R.id.logText);
         floorText   = (EditText) findViewById(R.id.floor_etext);
         invhText    = (EditText) findViewById(R.id.invhText);
+        Spinner mediationSpinner = (Spinner) findViewById(R.id.mediation_spinner);
+
+
+        ArrayAdapter<CharSequence> mediationSpinnerAdapter = ArrayAdapter.createFromResource(c,
+                R.array.mediation_array, android.R.layout.simple_spinner_item);
+
+        mediationSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mediationSpinner.setAdapter(mediationSpinnerAdapter);
+        mediationSpinner.setOnItemSelectedListener(this);
+
         invhText.setText(invh);
 
 
@@ -155,6 +175,16 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
 
 
 
+    private SdkInitializationListener initSdkListener() {
+        return new SdkInitializationListener() {
+            @Override
+            public void onInitializationFinished() {
+                // MoPub SDK initialized
+                Log.d("mopub", "init");
+            }
+        };
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == BARCODE_READER_REQUEST_CODE) {
@@ -175,16 +205,26 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
 //        int parentId = parent.getId();
 
         switch (spinnerId) {
+            case "Default":
+                server = "";
+                break;
             case "North Virginia":
                 //set server to north virginia
                 server = "http://nvirginia-my.mobfox.com";
-//                Toast.makeText(c, "North Virginia", Toast.LENGTH_SHORT).show();
                 break;
             case "Tokyo":
                 //set server to tokyo
                 server = "http://tokyo-my.mobfox.com";
+                break;
+            case "None":
+                invhText.setText("267d72ac3f77a3f447b32cf7ebf20673");
+                break;
+            case "AdMob":
+                invhText.setText("d2db78d5614bbc7a1cfe5a1ecb7760a2");
+                break;
+            case "MoPub":
+                invhText.setText("0fe750a1c049923f1b14f5958a353d1d");
 
-//                Toast.makeText(c, "Tokyo", Toast.LENGTH_SHORT).show();
                 break;
         }
 

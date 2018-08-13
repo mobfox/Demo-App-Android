@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <Button
@@ -14,10 +14,19 @@
         android:layout_height="50dp"
         android:layout_above="@+id/or_divider"
         android:layout_alignStart="@+id/or_divider"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/roundedgreyrect"
         android:text="@string/inventory_hash_qrcode"
         android:textColor="@android:color/white"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.696" />
 
 
     <EditText
@@ -26,7 +35,10 @@
         android:layout_height="50dp"
         android:layout_above="@+id/load_btn"
         android:layout_alignStart="@+id/or_divider"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/roundedwhiterect"
         android:ellipsize="start"
         android:ems="10"
@@ -35,15 +47,29 @@
         android:inputType="textPersonName"
         android:paddingVertical="14sp"
         android:textAlignment="center"
-        android:textSize="15dp" />
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/or_divider"
+        app:layout_constraintVertical_bias="0.046" />
 
     <Spinner
         android:id="@+id/server_spinner"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/qrcode"
-        android:layout_alignTop="@+id/floor_etext"
-        android:layout_marginEnd="13dp" />
+        android:layout_above="@+id/floor_etext"
+        android:layout_alignStart="@+id/mediation_spinner"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        ads:layout_constraintHorizontal_bias="0.697"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mediation_spinner"
+        app:layout_constraintVertical_bias="0.034" />
 
 
     <Button
@@ -52,10 +78,17 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/invhText"
-        android:layout_marginBottom="13dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/roundedbluerect"
         android:text="Load Your Ad"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/invhText" />
 
     <TextView
         android:id="@+id/logText"
@@ -63,12 +96,21 @@
         android:layout_height="60dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="45dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:ems="10"
         android:gravity="center"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 
     <TextView
@@ -77,23 +119,102 @@
         android:layout_height="30dp"
         android:layout_above="@+id/invhText"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/linedivider"
         android:paddingTop="5dp"
-        android:layout_marginBottom="5dp"
         android:text="OR"
         android:textAlignment="center"
-        android:textColor="#3ca6ff" />
+        android:textColor="#3ca6ff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/qrcode"
+        app:layout_constraintVertical_bias="0.043" />
+
 
     <EditText
         android:id="@+id/floor_etext"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/qrcode"
-        android:layout_alignStart="@+id/qrcode"
+        android:layout_alignStart="@+id/server_spinner"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginTop="8dp"
         android:ellipsize="start"
         android:ems="10"
         android:gravity="center_horizontal"
-        android:hint="Floor"
-        android:inputType="numberDecimal" />
+        android:hint="optional"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.603" />
 
-</RelativeLayout>
+    <Spinner
+        android:id="@+id/mediation_spinner"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/server_spinner"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toEndOf="@+id/floorTextView"
+        ads:layout_constraintHorizontal_bias="0.697"
+        app:layout_constraintBottom_toTopOf="@+id/floor_etext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.887" />
+
+    <TextView
+        android:id="@+id/mediationTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/mediation_spinner"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp"
+        android:text="Custom Event Test"
+        ads:layout_constraintHorizontal_bias="0.29"
+        ads:layout_constraintVertical_bias="0.464"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/mediation_spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/serverTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/floor_etext"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp"
+        android:text="Server:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/server_spinner"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.529" />
+
+    <TextView
+        android:id="@+id/floorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/floor_etext"
+        android:layout_alignBottom="@+id/floor_etext"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp"
+        android:text="Floor Price:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/floor_etext"
+        app:layout_constraintHorizontal_bias="0.186"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.596" />
+
+</android.support.constraint.ConstraintLayout>

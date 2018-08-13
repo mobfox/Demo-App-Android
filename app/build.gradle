@@ -31,7 +31,15 @@ dependencies {
     implementation 'com.google.android.gms:play-services-vision:15.0.1'
     implementation 'com.google.android.gms:play-services-ads:15.0.1'
     implementation 'com.github.mobfox:AndroidVideoCache:v2.7.1'
-    implementation 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.6.0'
+//    implementation 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core:3.6.0'
+//    implementation 'com.github.mobfox.MobFox-Android-SDK-Core:MAT-moat-mobile-app-kit:3.6.1'
 
+    implementation 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-AdMob-Adapter:3.6.1'
+    implementation 'com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-MoPub-Adapter:3.6.1'
+
+
+    implementation('com.mopub:mopub-sdk:5.2.0@aar') {
+        transitive = true
+    }
 
 }

@@ -125,6 +125,12 @@ public class MainActivity extends AppCompatActivity {
                 case 3:
                     Tab4_Inter_View tab4InterView = new Tab4_Inter_View();
                     return tab4InterView;
+                case 4:
+                    Tab5_AdMob_View tab5_adMob_view = new Tab5_AdMob_View();
+                    return tab5_adMob_view;
+                case 5:
+                    Tab6_MoPub_View tab6_moPub_view = new Tab6_MoPub_View();
+                    return tab6_moPub_view;
                 default:
                     return null;
             }
@@ -133,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 4;
+            return 6;
         }
     }
 

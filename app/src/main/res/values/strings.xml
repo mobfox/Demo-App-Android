@@ -35,6 +35,7 @@
         <item>Android App: 429a745008db96040e798895adfc6257</item>
         <item>SpotX: debd5b6244474cb113d3113bcfbb0c87</item>
     </string-array>
+
     <string-array name="spinnerkeys">
         <item>rt</item>
         <item>r_type</item>
@@ -85,22 +86,37 @@
         <item>dev_dnt</item>
         <item>o_androidimei</item>
     </string-array>
+
     <string-array name="servers_array">
-        <item>Server</item>
+        <item>Default</item>
         <item>North Virginia</item>
         <item>Tokyo</item>
     </string-array>
-    <string-array name="floor_array">
-        <item>Floor</item>
-        <item>FloorPrice1</item>
-        <item>FloorPrice2</item>
+
+    <string-array name="mediation_array">
+        <item>None</item>
+        <item>AdMob</item>
+        <item>MoPub</item>
     </string-array>
+
     <string-array name="sizes_array">
         <item>Size</item>
         <item>320x50</item>
         <item>300x50</item>
         <item>300x250</item>
     </string-array>
+
+    <string-array name="admob_rewarded_ce">
+        <item>Banner</item>
+        <item>Interstitial</item>
+        <item>Rewarded</item>
+    </string-array>
+
+    <string-array name="ce_sizes_array">
+        <item>Banner</item>
+        <item>Interstitial</item>
+    </string-array>
+
     <!-- Strings related to barcode scanner -->
     <string name="ok">OK</string>
     <string name="permission_camera_rationale">Access to the camera is needed for detection</string>
