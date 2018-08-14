@@ -14,21 +14,10 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.mobfox.sdk.banner.Banner;
 import com.mobfox.sdk.networking.MobfoxRequestParams;
-import com.mopub.common.MoPub;
-import com.mopub.common.SdkConfiguration;
-import com.mopub.common.SdkInitializationListener;
-import com.mopub.mobileads.MoPubErrorCode;
-import com.mopub.mobileads.MoPubView;
-
 import sdk.mobfox.com.mobfox_app.barcode.BarcodeCaptureActivity;
 
 /**
@@ -63,12 +52,12 @@ public class Tab3_300x250 extends Activity implements AdapterView.OnItemSelected
 
         requestParams = new MobfoxRequestParams();
 
-        floorText = findViewById(R.id.floor_etext);
-        logText = findViewById(R.id.logText);
-        invhText = findViewById(R.id.invhText);
-        loadBtn = findViewById(R.id.load_btn);
-        qrcode = findViewById(R.id.qrcode);
-        view = findViewById(R.id.banner_container300x250);
+        floorText     = findViewById(R.id.floor_etext);
+        logText       = findViewById(R.id.logText);
+        invhText      = findViewById(R.id.invhText);
+        loadBtn       = findViewById(R.id.load_btn);
+        qrcode        = findViewById(R.id.qrcode);
+        view          = findViewById(R.id.banner_container300x250);
 
 
         Spinner serverSpinner = findViewById(R.id.server_spinner);
@@ -107,11 +96,12 @@ public class Tab3_300x250 extends Activity implements AdapterView.OnItemSelected
 
 
         invh = invhText.getText().toString();
+        view.removeAllViews();
+        logText.setText("");
 
         banner = new Banner(c, 300, 250, invh, new Banner.Listener() {
             @Override
             public void onBannerError(Banner banner, Exception e) {
-                view.removeAllViews();
                 Toast.makeText(c, e.toString(), Toast.LENGTH_SHORT).show();
                 logText.setText(e.toString());
             }
@@ -120,7 +110,6 @@ public class Tab3_300x250 extends Activity implements AdapterView.OnItemSelected
             public void onBannerLoaded(Banner banner) {
                 Toast.makeText(c, "MobFox Banner loaded", Toast.LENGTH_SHORT).show();
                 view.addView(banner);
-                logText.setText("");
             }
 
             @Override
@@ -166,8 +155,6 @@ public class Tab3_300x250 extends Activity implements AdapterView.OnItemSelected
         }
 
         banner.load();
-
-
     }
 
 

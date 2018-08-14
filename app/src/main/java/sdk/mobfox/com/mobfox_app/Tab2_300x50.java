@@ -15,18 +15,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.mobfox.sdk.banner.Banner;
 import com.mobfox.sdk.networking.MobfoxRequestParams;
-import com.mopub.common.MoPub;
-import com.mopub.common.SdkConfiguration;
-import com.mopub.common.SdkInitializationListener;
-import com.mopub.mobileads.MoPubErrorCode;
-import com.mopub.mobileads.MoPubView;
+
 
 import sdk.mobfox.com.mobfox_app.barcode.BarcodeCaptureActivity;
 
@@ -62,12 +55,12 @@ public class Tab2_300x50 extends Activity implements AdapterView.OnItemSelectedL
 
         requestParams = new MobfoxRequestParams();
 
-        floorText = findViewById(R.id.floor_etext);
-        logText = findViewById(R.id.logText);
-        invhText = findViewById(R.id.invhText);
-        loadBtn = findViewById(R.id.load_btn);
-        qrcode = findViewById(R.id.qrcode);
-        view = findViewById(R.id.banner_container300x50);
+        floorText     = findViewById(R.id.floor_etext);
+        logText       = findViewById(R.id.logText);
+        invhText      = findViewById(R.id.invhText);
+        loadBtn       = findViewById(R.id.load_btn);
+        qrcode        = findViewById(R.id.qrcode);
+        view          = findViewById(R.id.banner_container300x50);
 
 
         Spinner serverSpinner = findViewById(R.id.server_spinner);
@@ -80,10 +73,7 @@ public class Tab2_300x50 extends Activity implements AdapterView.OnItemSelectedL
         serverSpinner.setOnItemSelectedListener(this);
         serverSpinner.setPrompt("Server");
 
-
-
         invhText.setText(invh);
-
 
         qrcode.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,44 +95,44 @@ public class Tab2_300x50 extends Activity implements AdapterView.OnItemSelectedL
 
     public void loadBanner() {
 
+        invh = invhText.getText().toString();
+        view.removeAllViews();
+        logText.setText("");
 
-            invh = invhText.getText().toString();
 
-            banner = new Banner(c, 300, 50, invh, new Banner.Listener() {
-                @Override
-                public void onBannerError(Banner banner, Exception e) {
-                    view.removeAllViews();
-                    Toast.makeText(c, e.toString(), Toast.LENGTH_SHORT).show();
-                    logText.setText(e.toString());
-                }
+        banner = new Banner(c, 300, 50, invh, new Banner.Listener() {
+            @Override
+            public void onBannerError(Banner banner, Exception e) {
+                Toast.makeText(c, e.toString(), Toast.LENGTH_SHORT).show();
+                logText.setText(e.toString());
+            }
 
-                @Override
-                public void onBannerLoaded(Banner banner) {
-                    Toast.makeText(c, "MobFox Banner loaded", Toast.LENGTH_SHORT).show();
-                    view.addView(banner);
-                    logText.setText("");
-                }
+            @Override
+            public void onBannerLoaded(Banner banner) {
+                Toast.makeText(c, "MobFox Banner loaded", Toast.LENGTH_SHORT).show();
+                view.addView(banner);
+            }
 
-                @Override
-                public void onBannerClosed(Banner banner) {
-                    Toast.makeText(c, "MobFox Banner closed", Toast.LENGTH_SHORT).show();
-                }
+            @Override
+            public void onBannerClosed(Banner banner) {
+                Toast.makeText(c, "MobFox Banner closed", Toast.LENGTH_SHORT).show();
+            }
 
-                @Override
-                public void onBannerFinished() {
-                    Toast.makeText(c, "MobFox Banner finished", Toast.LENGTH_SHORT).show();
-                }
+            @Override
+            public void onBannerFinished() {
+                Toast.makeText(c, "MobFox Banner finished", Toast.LENGTH_SHORT).show();
+            }
 
-                @Override
-                public void onBannerClicked(Banner banner) {
-                    Toast.makeText(c, "MobFox Banner clicked", Toast.LENGTH_SHORT).show();
-                }
+            @Override
+            public void onBannerClicked(Banner banner) {
+                Toast.makeText(c, "MobFox Banner clicked", Toast.LENGTH_SHORT).show();
+            }
 
-                @Override
-                public void onNoFill(Banner banner) {
-                    Toast.makeText(c, "MobFox Banner - no fill", Toast.LENGTH_SHORT).show();
-                }
-            });
+            @Override
+            public void onNoFill(Banner banner) {
+                Toast.makeText(c, "MobFox Banner - no fill", Toast.LENGTH_SHORT).show();
+            }
+        });
 
             if (floorText.getText().length() > 0) {
                 floor = Float.parseFloat(floorText.getText().toString());

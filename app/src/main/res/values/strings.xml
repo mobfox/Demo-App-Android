@@ -123,5 +123,11 @@
     <string name="no_camera_permission">This application cannot run because it does not have the camera permission.  The application will now exit.</string>
     <string name="low_storage_error">Face detector dependencies cannot be downloaded due to low device storage</string>
     <string name="inventory_hash_qrcode"><b>Scan QR Code</b></string>
+    <string name="mfmpHash">30d36ccbff22b2c7dae0e3d2669be832</string>
+    <string name="mfamHash">0daece1ffdca327ae9e7644f3db869e2</string>
+    <string name="mfbannerHash">fe96717d9875b9da4339ea5367eff1ec</string>
+    <string name="mfmpInterHash">0fe750a1c049923f1b14f5958a353d1d</string>
+    <string name="mfamInterHash">d2db78d5614bbc7a1cfe5a1ecb7760a2</string>
+    <string name="mfInterHash">267d72ac3f77a3f447b32cf7ebf20673</string>
 
 </resources>

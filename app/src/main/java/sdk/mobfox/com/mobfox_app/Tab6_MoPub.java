@@ -135,4 +135,10 @@ public class Tab6_MoPub extends AppCompatActivity {
             }
         };
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        moPubBanner.destroy();
+    }
 }

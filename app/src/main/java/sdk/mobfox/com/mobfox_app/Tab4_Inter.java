@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,8 +34,6 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
     private static final int BARCODE_READER_REQUEST_CODE = 1;
     private static String invh = "267d72ac3f77a3f447b32cf7ebf20673";
 
-    static long millisecs;
-    // final DummyAdapter da = new DummyAdapter();
     public Interstitial interAd;
     public EditText invhText;
     public EditText floorText;
@@ -58,8 +55,6 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tab4_inter);
 
-//        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.dummy_container);
-
         if (!MoPub.isSdkInitialized()){
             SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder("4ad212b1d0104c5998b288e7a8e35967")
                     .build();
@@ -71,12 +66,14 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
         mfrp = new MobfoxRequestParams();
 
 
-        Spinner serverSpinner = (Spinner) findViewById(R.id.server_spinner);
+        Spinner serverSpinner = findViewById(R.id.server_spinner);
 
-        logText     = (TextView) findViewById(R.id.logText);
-        floorText   = (EditText) findViewById(R.id.floor_etext);
-        invhText    = (EditText) findViewById(R.id.invhText);
-        Spinner mediationSpinner = (Spinner) findViewById(R.id.mediation_spinner);
+        logText     = findViewById(R.id.logText);
+        floorText   = findViewById(R.id.floor_etext);
+        invhText    = findViewById(R.id.invhText);
+        load        = findViewById(R.id.load_btn);
+
+        Spinner mediationSpinner = findViewById(R.id.mediation_spinner);
 
 
         ArrayAdapter<CharSequence> mediationSpinnerAdapter = ArrayAdapter.createFromResource(c,
@@ -89,9 +86,6 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
         invhText.setText(invh);
 
 
-        //final MobfoxInterstitial self = this;
-
-        load = (Button) findViewById(R.id.load_btn);
         load.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -217,13 +211,13 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
                 server = "http://tokyo-my.mobfox.com";
                 break;
             case "None":
-                invhText.setText("267d72ac3f77a3f447b32cf7ebf20673");
+                invhText.setText(R.string.mfInterHash);
                 break;
             case "AdMob":
-                invhText.setText("d2db78d5614bbc7a1cfe5a1ecb7760a2");
+                invhText.setText(R.string.mfamInterHash);
                 break;
             case "MoPub":
-                invhText.setText("0fe750a1c049923f1b14f5958a353d1d");
+                invhText.setText(R.string.mfmpInterHash);
 
                 break;
         }
