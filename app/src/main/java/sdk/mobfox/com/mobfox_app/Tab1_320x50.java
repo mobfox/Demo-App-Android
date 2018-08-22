@@ -7,6 +7,7 @@ package sdk.mobfox.com.mobfox_app;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -47,6 +48,9 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
     public Banner banner;
     public LinearLayout view;
 
+    Button newbnrbtn;
+    Banner testbanner;
+
 
     private SdkInitializationListener initSdkListener() {
         return new SdkInitializationListener() {
@@ -62,6 +66,52 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tab1_320x50);
+
+        testbanner = findViewById(R.id.testbanner);
+        newbnrbtn = findViewById(R.id.newbnrbtn);
+
+
+        newbnrbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                testbanner.setListener(new Banner.Listener() {
+                    @Override
+                    public void onBannerError(Banner banner, Exception e) {
+                        Toast.makeText(c,"error"+e.toString(),Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onBannerLoaded(Banner banner) {
+                        Log.d("newBanner >>>>>>> ","onBannerLoaded");
+
+                    }
+
+                    @Override
+                    public void onBannerClosed(Banner banner) {
+
+                    }
+
+                    @Override
+                    public void onBannerFinished() {
+
+                    }
+
+                    @Override
+                    public void onBannerClicked(Banner banner) {
+
+                    }
+
+                    @Override
+                    public void onNoFill(Banner banner) {
+                        Toast.makeText(c,"no fill",Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+                testbanner.load();
+            }
+        });
+
 
         c = getApplicationContext();
 
@@ -81,7 +131,7 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
         view          = findViewById(R.id.banner_container);
 
 
-        Spinner serverSpinner = findViewById(R.id.server_spinner);
+        Spinner serverSpinner = findViewById(R.id.server_spinner_320);
         Spinner mediationSpinner = findViewById(R.id.mediation_spinner);
 
 
@@ -91,7 +141,6 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
         serverSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         serverSpinner.setAdapter(serverSpinnerAdapter);
         serverSpinner.setOnItemSelectedListener(this);
-        serverSpinner.setPrompt("Server");
 
 
         ArrayAdapter<CharSequence> mediationSpinnerAdapter = ArrayAdapter.createFromResource(c,
@@ -174,16 +223,22 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
 
         if (!server.equals("")) {
             if (server.equals("http://nvirginia-my.mobfox.com")) {
-                requestParams.setParam("debugResponseURL", server);
+                requestParams.setParam("debugRequestURL", server);
                 banner.addParams(requestParams);
             }
             if (server.equals("http://tokyo-my.mobfox.com")) {
-                requestParams.setParam("debugResponseURL", server);
+                requestParams.setParam("debugRequestURL", server);
                 banner.addParams(requestParams);
 
             }
 
         }
+
+        if (invh.contains("http")){
+            requestParams.setParam(MobfoxRequestParams.DEBUG_REQUEST_URL,invh);
+            banner.addParams(requestParams);
+        }
+
 
         banner.load();
 
@@ -200,7 +255,6 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
                     // mResultTextView.setText(barcode.displayValue);
                     //invh = barcode.displayValue;
                     invhText.setText(barcode.displayValue);
-                    Log.d("TAG", "TAG");
                 }
             }
         } else super.onActivityResult(requestCode, resultCode, data);
@@ -209,6 +263,10 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        if (((TextView) parent.getChildAt(0))!=null){
+            ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
+        }
 
         String spinnerId = parent.getItemAtPosition(position).toString();
 //        int parentId = parent.getId();

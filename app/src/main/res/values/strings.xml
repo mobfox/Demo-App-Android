@@ -129,5 +129,6 @@
     <string name="mfmpInterHash">0fe750a1c049923f1b14f5958a353d1d</string>
     <string name="mfamInterHash">d2db78d5614bbc7a1cfe5a1ecb7760a2</string>
     <string name="mfInterHash">267d72ac3f77a3f447b32cf7ebf20673</string>
+    <string name="action_about">About</string>
 
 </resources>

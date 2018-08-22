@@ -3,6 +3,7 @@ package sdk.mobfox.com.mobfox_app;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -154,6 +155,11 @@ public class Tab3_300x250 extends Activity implements AdapterView.OnItemSelected
 
         }
 
+        if (invh.contains("http")){
+            requestParams.setParam(MobfoxRequestParams.DEBUG_REQUEST_URL,invh);
+            banner.addParams(requestParams);
+        }
+
         banner.load();
     }
 
@@ -177,6 +183,9 @@ public class Tab3_300x250 extends Activity implements AdapterView.OnItemSelected
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+        if (((TextView) parent.getChildAt(0))!=null){
+            ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
+        }
         String spinnerId = parent.getItemAtPosition(position).toString();
 //        int parentId = parent.getId();
 

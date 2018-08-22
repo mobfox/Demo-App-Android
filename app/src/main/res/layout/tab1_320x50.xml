@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mobfox="http://schemas.android.com/apk/lib/com.mobfox.sdk"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -55,7 +56,7 @@
         app:layout_constraintVertical_bias="0.046" />
 
     <Spinner
-        android:id="@+id/server_spinner"
+        android:id="@+id/server_spinner_320"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/floor_etext"
@@ -85,6 +86,8 @@
         android:background="@drawable/roundedbluerect"
         android:text="Load Your Ad"
         android:textColor="@android:color/white"
+        ads:layout_constraintTop_toTopOf="parent"
+        ads:layout_constraintVertical_bias="1.0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -140,7 +143,7 @@
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/qrcode"
-        android:layout_alignStart="@+id/server_spinner"
+        android:layout_alignStart="@+id/server_spinner_320"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="80dp"
         android:layout_marginTop="8dp"
@@ -158,7 +161,7 @@
         android:id="@+id/mediation_spinner"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/server_spinner"
+        android:layout_above="@+id/server_spinner_320"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -195,7 +198,7 @@
         android:layout_marginBottom="8dp"
         android:text="Server:"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/server_spinner"
+        app:layout_constraintEnd_toStartOf="@+id/server_spinner_320"
         app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -233,5 +236,58 @@
         app:layout_constraintVertical_bias="0.0">
 
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintHorizontal_bias="0.503"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toTopOf="parent"
+        ads:layout_constraintVertical_bias="0.302" />
+
+    <com.mobfox.sdk.banner.Banner
+        android:id="@+id/testbanner"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="140dp"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toTopOf="parent"
+        ads:layout_constraintVertical_bias="0.095"
+        mobfox:inventory="fe96717d9875b9da4339ea5367eff1ec">
+
+    </com.mobfox.sdk.banner.Banner>
+
+    <Button
+        android:id="@+id/newbnrbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Button"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
+        ads:layout_constraintHorizontal_bias="0.278"
+        ads:layout_constraintStart_toStartOf="parent"
+        ads:layout_constraintTop_toTopOf="parent"
+        ads:layout_constraintVertical_bias="0.163" />
 
 </android.support.constraint.ConstraintLayout>

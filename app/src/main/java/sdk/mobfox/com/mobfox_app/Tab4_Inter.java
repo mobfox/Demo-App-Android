@@ -3,6 +3,7 @@ package sdk.mobfox.com.mobfox_app;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +43,7 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
     public Button qrcode;
     public TextView logText;
     public String server="";
+    public Switch videoSwitch;
 
     MobfoxRequestParams mfrp;
 
@@ -72,6 +75,7 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
         floorText   = findViewById(R.id.floor_etext);
         invhText    = findViewById(R.id.invhText);
         load        = findViewById(R.id.load_btn);
+        videoSwitch = findViewById(R.id.video_switch);
 
         Spinner mediationSpinner = findViewById(R.id.mediation_spinner);
 
@@ -99,15 +103,28 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
                         interAd.setRequestParams(mfrp);
                     }
                 }
+
                 if (!server.equals("")){
                     if (server.equals("http://nvirginia-my.mobfox.com")){
                         mfrp.setParam("debugResponseURL", server);
                         interAd.setRequestParams(mfrp);
                     }
+
                     if (server.equals("http://tokyo-my.mobfox.com")){
                         mfrp.setParam("debugResponseURL", server);
                         interAd.setRequestParams(mfrp);
+                    }
+                }
 
+                if (invh.contains("http")) {
+                    if (videoSwitch.isChecked()) {
+                        mfrp = new MobfoxRequestParams();
+                        mfrp.setParam(MobfoxRequestParams.DEBUG_VIDEO_REQUEST_URL, invh);
+                        interAd.setRequestParams(mfrp);
+                    } else {
+                        mfrp = new MobfoxRequestParams();
+                        mfrp.setParam(MobfoxRequestParams.DEBUG_REQUEST_URL, invh);
+                        interAd.setRequestParams(mfrp);
                     }
 
                 }
@@ -147,6 +164,8 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
                         Toast.makeText(c, "finished", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+
                 interAd.load();
             }
         });
@@ -195,6 +214,11 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        if (((TextView) parent.getChildAt(0))!=null){
+            ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
+        }
+
         String spinnerId = parent.getItemAtPosition(position).toString();
 //        int parentId = parent.getId();
 
@@ -218,7 +242,6 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
                 break;
             case "MoPub":
                 invhText.setText(R.string.mfmpInterHash);
-
                 break;
         }
 

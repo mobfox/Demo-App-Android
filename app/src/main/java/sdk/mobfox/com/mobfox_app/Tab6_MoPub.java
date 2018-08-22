@@ -71,6 +71,7 @@ public class Tab6_MoPub extends AppCompatActivity {
             public void onClick(View view) {
                 mopubInvh = invhText.getText().toString();
 
+
                 moPubBanner.setAdUnitId(mopubInvh);
                 moPubBanner.setBannerAdListener(new MoPubView.BannerAdListener() {
                     @Override
