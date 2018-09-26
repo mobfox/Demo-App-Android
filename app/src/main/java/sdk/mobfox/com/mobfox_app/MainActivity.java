@@ -1,9 +1,10 @@
 package sdk.mobfox.com.mobfox_app;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -15,7 +16,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
+
+import com.mobfox.sdk.constants.Constants;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -80,6 +83,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if (sharedPreferences !=null){
+            String servrStr = sharedPreferences.getString("domain","");
+            if (!servrStr.isEmpty()){
+                Constants.TAG_SERVER = servrStr +"/";
+                //Toast.makeText(getApplicationContext(),servrStr,Toast.LENGTH_SHORT).show();
+            } else {
+                Constants.TAG_SERVER = "https://sdk.starbolt.io/";
+            }
+
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -95,8 +114,14 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
-            Toast.makeText(this,"ABOUT..",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"ABOUT..",Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this,AboutActivity.class);
+            startActivity(intent);
             return true;
+        }
+        if (id == R.id.action_settings){
+            Intent intent = new Intent(this,SettingsActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);

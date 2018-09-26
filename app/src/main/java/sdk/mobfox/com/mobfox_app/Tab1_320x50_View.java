@@ -27,7 +27,6 @@ public class Tab1_320x50_View extends Fragment {
         c = getContext();
 
         interBtn = (ImageView) rootView.findViewById(R.id.image320x50);
-//        interBtn.setImageDrawable(R.drawable.demo300x50);
         interBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

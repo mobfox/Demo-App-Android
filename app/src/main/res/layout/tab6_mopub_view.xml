@@ -8,15 +8,15 @@
 
     <ImageView
         android:id="@+id/mopublogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="318dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
-        android:src="@drawable/mopub_bird_logo"
+        android:src="@drawable/twitter_bird_logo_smaller_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.487" />
 </android.support.constraint.ConstraintLayout>

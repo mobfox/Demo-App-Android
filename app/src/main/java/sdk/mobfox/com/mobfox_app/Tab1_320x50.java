@@ -7,8 +7,10 @@ package sdk.mobfox.com.mobfox_app;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -48,9 +50,6 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
     public Banner banner;
     public LinearLayout view;
 
-    Button newbnrbtn;
-    Banner testbanner;
-
 
     private SdkInitializationListener initSdkListener() {
         return new SdkInitializationListener() {
@@ -66,54 +65,15 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tab1_320x50);
-
-        testbanner = findViewById(R.id.testbanner);
-        newbnrbtn = findViewById(R.id.newbnrbtn);
-
-
-        newbnrbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                testbanner.setListener(new Banner.Listener() {
-                    @Override
-                    public void onBannerError(Banner banner, Exception e) {
-                        Toast.makeText(c,"error"+e.toString(),Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onBannerLoaded(Banner banner) {
-                        Log.d("newBanner >>>>>>> ","onBannerLoaded");
-
-                    }
-
-                    @Override
-                    public void onBannerClosed(Banner banner) {
-
-                    }
-
-                    @Override
-                    public void onBannerFinished() {
-
-                    }
-
-                    @Override
-                    public void onBannerClicked(Banner banner) {
-
-                    }
-
-                    @Override
-                    public void onNoFill(Banner banner) {
-                        Toast.makeText(c,"no fill",Toast.LENGTH_SHORT).show();
-
-                    }
-                });
-                testbanner.load();
-            }
-        });
-
-
         c = getApplicationContext();
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        if (sharedPreferences !=null){
+            String str = sharedPreferences.getString("domain","");
+            //Toast.makeText(c,str,Toast.LENGTH_SHORT).show();
+        }
+
+
 
         if (!MoPub.isSdkInitialized()) {
             SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder("4ad212b1d0104c5998b288e7a8e35967")
@@ -131,17 +91,7 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
         view          = findViewById(R.id.banner_container);
 
 
-        Spinner serverSpinner = findViewById(R.id.server_spinner_320);
         Spinner mediationSpinner = findViewById(R.id.mediation_spinner);
-
-
-        ArrayAdapter<CharSequence> serverSpinnerAdapter = ArrayAdapter.createFromResource(c,
-                R.array.servers_array, android.R.layout.simple_spinner_item);
-
-        serverSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        serverSpinner.setAdapter(serverSpinnerAdapter);
-        serverSpinner.setOnItemSelectedListener(this);
-
 
         ArrayAdapter<CharSequence> mediationSpinnerAdapter = ArrayAdapter.createFromResource(c,
                 R.array.mediation_array, android.R.layout.simple_spinner_item);
@@ -219,19 +169,6 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
                 requestParams.setParam(MobfoxRequestParams.R_FLOOR, floor);
                 banner.addParams(requestParams);
             }
-        }
-
-        if (!server.equals("")) {
-            if (server.equals("http://nvirginia-my.mobfox.com")) {
-                requestParams.setParam("debugRequestURL", server);
-                banner.addParams(requestParams);
-            }
-            if (server.equals("http://tokyo-my.mobfox.com")) {
-                requestParams.setParam("debugRequestURL", server);
-                banner.addParams(requestParams);
-
-            }
-
         }
 
         if (invh.contains("http")){

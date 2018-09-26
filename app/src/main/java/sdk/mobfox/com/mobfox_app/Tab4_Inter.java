@@ -68,9 +68,6 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
 
         mfrp = new MobfoxRequestParams();
 
-
-        Spinner serverSpinner = findViewById(R.id.server_spinner);
-
         logText     = findViewById(R.id.logText);
         floorText   = findViewById(R.id.floor_etext);
         invhText    = findViewById(R.id.invhText);
@@ -94,38 +91,13 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
             @Override
             public void onClick(View view) {
                 invh = invhText.getText().toString();
-                interAd = new Interstitial(c,invh);
 
-                if (floorText.getText().length() > 0){
-                    floor = Float.parseFloat(floorText.getText().toString());
-                    if(floor > 0){
-                        mfrp.setParam(MobfoxRequestParams.R_FLOOR,floor);
-                        interAd.setRequestParams(mfrp);
-                    }
-                }
+                //to display vast from url - Interstitial must be initialized using video hash
+                if (invh.contains("http") && videoSwitch.isChecked()) {
+                    interAd = new Interstitial(c, "80187188f458cfde788d961b6882fd53");
 
-                if (!server.equals("")){
-                    if (server.equals("http://nvirginia-my.mobfox.com")){
-                        mfrp.setParam("debugResponseURL", server);
-                        interAd.setRequestParams(mfrp);
-                    }
-
-                    if (server.equals("http://tokyo-my.mobfox.com")){
-                        mfrp.setParam("debugResponseURL", server);
-                        interAd.setRequestParams(mfrp);
-                    }
-                }
-
-                if (invh.contains("http")) {
-                    if (videoSwitch.isChecked()) {
-                        mfrp = new MobfoxRequestParams();
-                        mfrp.setParam(MobfoxRequestParams.DEBUG_VIDEO_REQUEST_URL, invh);
-                        interAd.setRequestParams(mfrp);
-                    } else {
-                        mfrp = new MobfoxRequestParams();
-                        mfrp.setParam(MobfoxRequestParams.DEBUG_REQUEST_URL, invh);
-                        interAd.setRequestParams(mfrp);
-                    }
+                } else {
+                    interAd = new Interstitial(c, invh);
 
                 }
 
@@ -165,16 +137,34 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
                     }
                 });
 
+                if (floorText.getText().length() > 0){
+                    floor = Float.parseFloat(floorText.getText().toString());
+                    if(floor > 0){
+                        mfrp.setParam(MobfoxRequestParams.R_FLOOR,floor);
+                        interAd.setRequestParams(mfrp);
+                    }
+                }
+
+                if (invh.contains("http")) {
+                    if (videoSwitch.isChecked()) {
+                        mfrp = new MobfoxRequestParams();
+                        mfrp.setParam(MobfoxRequestParams.DEBUG_VIDEO_REQUEST_URL, invh);
+                        interAd.setRequestParams(mfrp);
+                    } else {
+                        mfrp = new MobfoxRequestParams();
+                        mfrp.setParam(MobfoxRequestParams.DEBUG_REQUEST_URL, invh);
+                        interAd.setRequestParams(mfrp);
+                    }
+
+                }
+
+
+
 
                 interAd.load();
             }
         });
 
-        ArrayAdapter<CharSequence> serverSpinnerAdapter = ArrayAdapter.createFromResource(c,
-                R.array.servers_array, android.R.layout.simple_spinner_item);
-        serverSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        serverSpinner.setAdapter(serverSpinnerAdapter);
-        serverSpinner.setOnItemSelectedListener(this);
 
         qrcode = (Button) findViewById(R.id.qrcode);
         qrcode.setOnClickListener(new View.OnClickListener() {

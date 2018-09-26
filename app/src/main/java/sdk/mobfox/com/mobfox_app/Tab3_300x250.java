@@ -60,18 +60,6 @@ public class Tab3_300x250 extends Activity implements AdapterView.OnItemSelected
         qrcode        = findViewById(R.id.qrcode);
         view          = findViewById(R.id.banner_container300x250);
 
-
-        Spinner serverSpinner = findViewById(R.id.server_spinner);
-
-        ArrayAdapter<CharSequence> serverSpinnerAdapter = ArrayAdapter.createFromResource(c,
-                R.array.servers_array, android.R.layout.simple_spinner_item);
-
-        serverSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        serverSpinner.setAdapter(serverSpinnerAdapter);
-        serverSpinner.setOnItemSelectedListener(this);
-        serverSpinner.setPrompt("Server");
-
-
         invhText.setText(invh);
 
 
@@ -140,19 +128,6 @@ public class Tab3_300x250 extends Activity implements AdapterView.OnItemSelected
                 requestParams.setParam(MobfoxRequestParams.R_FLOOR, floor);
                 banner.addParams(requestParams);
             }
-        }
-
-        if (!server.equals("")) {
-            if (server.equals("http://nvirginia-my.mobfox.com")) {
-                requestParams.setParam("debugResponseURL", server);
-                banner.addParams(requestParams);
-            }
-            if (server.equals("http://tokyo-my.mobfox.com")) {
-                requestParams.setParam("debugResponseURL", server);
-                banner.addParams(requestParams);
-
-            }
-
         }
 
         if (invh.contains("http")){

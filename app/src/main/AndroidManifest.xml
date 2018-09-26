@@ -15,36 +15,37 @@
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"
-            android:theme="@style/SplashTheme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SettingsActivity" />
         <activity android:name="com.mobfox.sdk.interstitial.InterstitialActivity" />
         <activity android:name=".barcode.BarcodeCaptureActivity" />
         <activity
             android:name=".Tab4_Inter"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".Tab1_320x50"
-            android:windowSoftInputMode="adjustPan"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Tab2_300x50"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".Tab3_300x250"
-            android:windowSoftInputMode="stateHidden|adjustPan"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <!-- MoPub classes -->
         <activity
@@ -65,14 +66,13 @@
         <activity
             android:name="com.mopub.common.privacy.ConsentDialogActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
-
-
         <activity
             android:name=".Tab5_AdMob"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Tab6_MoPub"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+        <activity android:name=".AboutActivity"></activity>
     </application>
 
 </manifest>
