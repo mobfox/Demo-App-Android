@@ -10,7 +10,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -44,6 +46,7 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
     public TextView logText;
     public String server="";
     public Switch videoSwitch;
+    public ProgressBar progressBar;
 
     MobfoxRequestParams mfrp;
 
@@ -73,6 +76,9 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
         invhText    = findViewById(R.id.invhText);
         load        = findViewById(R.id.load_btn);
         videoSwitch = findViewById(R.id.video_switch);
+        progressBar = findViewById(R.id.mfBannerInterPB);
+
+        progressBar.setVisibility(View.GONE);
 
         Spinner mediationSpinner = findViewById(R.id.mediation_spinner);
 
@@ -90,6 +96,9 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
         load.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                progressBar.setVisibility(View.VISIBLE);
+
                 invh = invhText.getText().toString();
 
                 //to display vast from url - Interstitial must be initialized using video hash
@@ -104,12 +113,14 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
                 interAd.setListener(new InterstitialListener() {
                     @Override
                     public void onInterstitialLoaded(Interstitial interstitial) {
+                        progressBar.setVisibility(View.GONE);
                         Toast.makeText(c, "inter loaded", Toast.LENGTH_SHORT).show();
                         interAd.show();
                     }
 
                     @Override
                     public void onInterstitialFailed(String e) {
+                        progressBar.setVisibility(View.GONE);
                         Toast.makeText(c, e, Toast.LENGTH_SHORT).show();
                         logText.setText(e);
 
@@ -148,11 +159,13 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
                 if (invh.contains("http")) {
                     if (videoSwitch.isChecked()) {
                         mfrp = new MobfoxRequestParams();
-                        mfrp.setParam(MobfoxRequestParams.DEBUG_VIDEO_REQUEST_URL, invh);
+                        mfrp.setParam(MobfoxRequestParams.DEBUG_VIDEO_REQUEST_URL,invh);
+                        mfrp.setParam(MobfoxRequestParams.DEBUG_WATERFALL, "[\"video\"]");
                         interAd.setRequestParams(mfrp);
                     } else {
                         mfrp = new MobfoxRequestParams();
                         mfrp.setParam(MobfoxRequestParams.DEBUG_REQUEST_URL, invh);
+                        mfrp.setParam(MobfoxRequestParams.DEBUG_WATERFALL,  "[\"banner\"]");
                         interAd.setRequestParams(mfrp);
                     }
 
@@ -162,6 +175,21 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
 
 
                 interAd.load();
+            }
+        });
+
+        videoSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (videoSwitch.isChecked()){
+                    if (!invhText.getText().toString().contains("http")){
+                        invhText.setText("80187188f458cfde788d961b6882fd53");
+                    }
+                }else {
+                    if (!invhText.getText().toString().contains("http")){
+                        invhText.setText("267d72ac3f77a3f447b32cf7ebf20673");
+                    }
+                }
             }
         });
 

@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +41,8 @@ public class Tab2_300x50 extends Activity implements AdapterView.OnItemSelectedL
     public MobfoxRequestParams requestParams;
     public int mediation;
 
+    public ProgressBar progressBar;
+
     float floor = -1;
     String server = "";
 
@@ -62,6 +65,9 @@ public class Tab2_300x50 extends Activity implements AdapterView.OnItemSelectedL
         loadBtn       = findViewById(R.id.load_btn);
         qrcode        = findViewById(R.id.qrcode);
         view          = findViewById(R.id.banner_container300x50);
+        progressBar   = findViewById(R.id.mfBanner300x50PB);
+
+        progressBar.setVisibility(View.GONE);
 
         invhText.setText(invh);
 
@@ -89,16 +95,19 @@ public class Tab2_300x50 extends Activity implements AdapterView.OnItemSelectedL
         view.removeAllViews();
         logText.setText("");
 
+        progressBar.setVisibility(View.VISIBLE);
 
         banner = new Banner(c, 300, 50, invh, new Banner.Listener() {
             @Override
             public void onBannerError(Banner banner, Exception e) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, e.toString(), Toast.LENGTH_SHORT).show();
                 logText.setText(e.toString());
             }
 
             @Override
             public void onBannerLoaded(Banner banner) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, "MobFox Banner loaded", Toast.LENGTH_SHORT).show();
                 view.addView(banner);
             }
@@ -120,6 +129,7 @@ public class Tab2_300x50 extends Activity implements AdapterView.OnItemSelectedL
 
             @Override
             public void onNoFill(Banner banner) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, "MobFox Banner - no fill", Toast.LENGTH_SHORT).show();
             }
         });

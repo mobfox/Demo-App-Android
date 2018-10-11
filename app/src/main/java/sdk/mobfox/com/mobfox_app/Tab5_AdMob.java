@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,6 +46,7 @@ public class Tab5_AdMob extends Activity implements AdapterView.OnItemSelectedLi
     public TextView logText;
     public EditText invhText, floorText;
     public Button qrcode, loadBtn;
+    public ProgressBar progressBar;
 
     InterstitialAd mInterstitialAd;
     RewardedVideoAd mRewardedAd;
@@ -65,12 +67,15 @@ public class Tab5_AdMob extends Activity implements AdapterView.OnItemSelectedLi
         c = getApplicationContext();
         self = this;
 
-        floorText = findViewById(R.id.floor_etext);
-        logText = findViewById(R.id.logText);
-        invhText = findViewById(R.id.invhText);
-        loadBtn = findViewById(R.id.load_btn);
-        qrcode = findViewById(R.id.qrcode);
+        floorText       = findViewById(R.id.floor_etext);
+        logText         = findViewById(R.id.logText);
+        invhText        = findViewById(R.id.invhText);
+        loadBtn         = findViewById(R.id.load_btn);
+        qrcode          = findViewById(R.id.qrcode);
         bannerContainer = findViewById(R.id.admob_banner_container);
+        progressBar     = findViewById(R.id.amProgressBar);
+
+        progressBar.setVisibility(View.GONE);
 
         invhText.setText(admobBannerInvh);
 
@@ -87,12 +92,14 @@ public class Tab5_AdMob extends Activity implements AdapterView.OnItemSelectedLi
         admobBannerListener = new AdListener() {
             @Override
             public void onAdLoaded() {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, "AdMob Banner loaded", Toast.LENGTH_SHORT).show();
                 Log.d("AdMobBanner", "onAdClosed");
             }
 
             @Override
             public void onAdFailedToLoad(int errorCode) {
+                progressBar.setVisibility(View.GONE);
                 logText.setText(errorCode);
                 Toast.makeText(c, "AdMob Banner failed", Toast.LENGTH_SHORT).show();
                 Log.d("AdMobBanner", "onAdClosed: " + errorCode);
@@ -129,6 +136,7 @@ public class Tab5_AdMob extends Activity implements AdapterView.OnItemSelectedLi
 
             @Override
             public void onAdFailedToLoad(int errorCode) {
+                progressBar.setVisibility(View.GONE);
                 Log.d("AdMobInterstitial", "onAdFailedToLoad: "+ errorCode);
             }
 
@@ -144,6 +152,7 @@ public class Tab5_AdMob extends Activity implements AdapterView.OnItemSelectedLi
 
             @Override
             public void onAdLoaded() {
+                progressBar.setVisibility(View.GONE);
                 Log.d("AdMobInterstitial", "onAdLoaded");
                 mInterstitialAd.show();
             }
@@ -154,7 +163,9 @@ public class Tab5_AdMob extends Activity implements AdapterView.OnItemSelectedLi
         admobRewardedListener = new RewardedVideoAdListener() {
             @Override
             public void onRewardedVideoAdLoaded() {
+                progressBar.setVisibility(View.GONE);
                 Log.d("AdmMobRewarded", "onRewardedVideoAdLoaded");
+                Toast.makeText(c,"Rewarded video loaded",Toast.LENGTH_SHORT).show();
                 mRewardedAd.show();
             }
 
@@ -189,6 +200,7 @@ public class Tab5_AdMob extends Activity implements AdapterView.OnItemSelectedLi
 
             @Override
             public void onRewardedVideoAdFailedToLoad(int i) {
+                progressBar.setVisibility(View.GONE);
                 Log.d("AdmMobRewarded", "onRewardedVideoAdFailedToLoad: "+ i);
             }
 
@@ -211,6 +223,8 @@ public class Tab5_AdMob extends Activity implements AdapterView.OnItemSelectedLi
         loadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                progressBar.setVisibility(View.VISIBLE);
 
                 Bundle bundle = new Bundle();
                 bundle.putBoolean("gdpr", true);

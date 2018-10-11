@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,20 +44,15 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
     MoPubView.BannerAdListener mBannerListener;
     MoPubInterstitial.InterstitialAdListener mInterstitialListener;
 
-
-
-
     private static final int BARCODE_READER_REQUEST_CODE = 1;
     private static String mopubBannerInvh = "4ad212b1d0104c5998b288e7a8e35967";
     final String mopubRewardedInvh = "005491feb31848a0ae7b9daf4a46c701";
     String mopubInterstitialInvh  = "3fd85a3e7a9d43ea993360a2536b7bbd";
 
-
-
-
     public TextView logText;
     public EditText invhText, floorText;
     public Button qrcode, loadBtn;
+    public ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +67,9 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
         loadBtn     = findViewById(R.id.load_btn);
         qrcode      = findViewById(R.id.qrcode);
         moPubBanner = findViewById(R.id.mopubview);
+        progressBar = findViewById(R.id.mpProgressBar);
+
+        progressBar.setVisibility(View.GONE);
 
 
         Spinner sizeSpinner = findViewById(R.id.mp_spinner);
@@ -98,11 +97,13 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
         mBannerListener = new MoPubView.BannerAdListener() {
             @Override
             public void onBannerLoaded(MoPubView banner) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, "MoPub Banner loaded", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onBannerFailed(MoPubView banner, MoPubErrorCode errorCode) {
+                progressBar.setVisibility(View.GONE);
                 logText.setText(errorCode.toString());
                 Toast.makeText(c, "MoPub Banner failed", Toast.LENGTH_SHORT).show();
                 banner.destroy();
@@ -130,6 +131,7 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
         mInterstitialListener = new MoPubInterstitial.InterstitialAdListener() {
             @Override
             public void onInterstitialLoaded(MoPubInterstitial interstitial) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, "loaded", Toast.LENGTH_SHORT).show();
                 if (interstitial.isReady()) {
                     mInterstitial.show();
@@ -140,7 +142,9 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
 
             @Override
             public void onInterstitialFailed(MoPubInterstitial interstitial, MoPubErrorCode errorCode) {
-                Toast.makeText(c, "failed", Toast.LENGTH_SHORT).show();
+                progressBar.setVisibility(View.GONE);
+                logText.setText(errorCode.toString());
+                Toast.makeText(c, "Interstitial load failed: " + errorCode, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -165,16 +169,19 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
         final MoPubRewardedVideoListener moPubRewardedVideoListener = new MoPubRewardedVideoListener() {
             @Override
             public void onRewardedVideoLoadSuccess(@NonNull String adUnitId) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, "Rewarded Load Success", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRewardedVideoLoadFailure(@NonNull String adUnitId, @NonNull MoPubErrorCode errorCode) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, "Rewarded Load Failure: " + errorCode, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRewardedVideoStarted(@NonNull String adUnitId) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, "Rewarded Video Started", Toast.LENGTH_SHORT).show();
             }
 
@@ -190,6 +197,7 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
 
             @Override
             public void onRewardedVideoClosed(@NonNull String adUnitId) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, "Rewarded Video Closed", Toast.LENGTH_SHORT).show();
             }
 
@@ -217,6 +225,8 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
         loadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                progressBar.setVisibility(View.VISIBLE);
 
                 mopubBannerInvh = invhText.getText().toString();
 

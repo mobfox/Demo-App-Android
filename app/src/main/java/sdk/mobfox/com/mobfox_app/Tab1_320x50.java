@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,8 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
     public Button qrcode, loadBtn;
     public Context c;
     public MobfoxRequestParams requestParams;
+
+    public ProgressBar progressBar;
 
     float floor = -1;
     public String server = "";
@@ -89,6 +92,9 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
         loadBtn       = findViewById(R.id.load_btn);
         qrcode        = findViewById(R.id.qrcode);
         view          = findViewById(R.id.banner_container);
+        progressBar   = findViewById(R.id.mfBannerProgressBar);
+
+        progressBar.setVisibility(View.GONE);
 
 
         Spinner mediationSpinner = findViewById(R.id.mediation_spinner);
@@ -127,16 +133,19 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
         invh = invhText.getText().toString();
         view.removeAllViews();
         logText.setText("");
+        progressBar.setVisibility(View.VISIBLE);
 
         banner = new Banner(c, 320, 50, invh, new Banner.Listener() {
             @Override
             public void onBannerError(Banner banner, Exception e) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, e.toString(), Toast.LENGTH_SHORT).show();
                 logText.setText(e.toString());
             }
 
             @Override
             public void onBannerLoaded(Banner banner) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, "MobFox Banner loaded", Toast.LENGTH_SHORT).show();
                 view.addView(banner);
             }
@@ -158,6 +167,7 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
 
             @Override
             public void onNoFill(Banner banner) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, "MobFox Banner - no fill", Toast.LENGTH_SHORT).show();
 
             }

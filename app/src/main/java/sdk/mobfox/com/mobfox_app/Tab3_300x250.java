@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +37,7 @@ public class Tab3_300x250 extends Activity implements AdapterView.OnItemSelected
     public Context c;
     public MobfoxRequestParams requestParams;
     public int mediation;
+    public ProgressBar progressBar;
 
     float floor = -1;
     String server = "";
@@ -59,6 +61,9 @@ public class Tab3_300x250 extends Activity implements AdapterView.OnItemSelected
         loadBtn       = findViewById(R.id.load_btn);
         qrcode        = findViewById(R.id.qrcode);
         view          = findViewById(R.id.banner_container300x250);
+        progressBar   = findViewById(R.id.mfBanner300x250PB);
+
+        progressBar.setVisibility(View.GONE);
 
         invhText.setText(invh);
 
@@ -83,7 +88,7 @@ public class Tab3_300x250 extends Activity implements AdapterView.OnItemSelected
 
     public void loadBanner() {
 
-
+        progressBar.setVisibility(View.VISIBLE);
         invh = invhText.getText().toString();
         view.removeAllViews();
         logText.setText("");
@@ -91,12 +96,14 @@ public class Tab3_300x250 extends Activity implements AdapterView.OnItemSelected
         banner = new Banner(c, 300, 250, invh, new Banner.Listener() {
             @Override
             public void onBannerError(Banner banner, Exception e) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, e.toString(), Toast.LENGTH_SHORT).show();
                 logText.setText(e.toString());
             }
 
             @Override
             public void onBannerLoaded(Banner banner) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, "MobFox Banner loaded", Toast.LENGTH_SHORT).show();
                 view.addView(banner);
             }
@@ -118,6 +125,7 @@ public class Tab3_300x250 extends Activity implements AdapterView.OnItemSelected
 
             @Override
             public void onNoFill(Banner banner) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(c, "MobFox Banner - no fill", Toast.LENGTH_SHORT).show();
             }
         });
