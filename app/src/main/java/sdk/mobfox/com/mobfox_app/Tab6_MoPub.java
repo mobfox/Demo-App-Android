@@ -43,6 +43,8 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
 
     MoPubView.BannerAdListener mBannerListener;
     MoPubInterstitial.InterstitialAdListener mInterstitialListener;
+    MoPubReward selectedReward;
+
 
     private static final int BARCODE_READER_REQUEST_CODE = 1;
     private static String mopubBannerInvh = "4ad212b1d0104c5998b288e7a8e35967";
@@ -170,8 +172,22 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
             @Override
             public void onRewardedVideoLoadSuccess(@NonNull String adUnitId) {
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(c, "Rewarded Load Success", Toast.LENGTH_SHORT).show();
-            }
+                Set<MoPubReward> rewards;
+
+                if (MoPubRewardedVideos.getAvailableRewards(mopubRewardedInvh)!=null){
+                    rewards =  MoPubRewardedVideos.getAvailableRewards(mopubRewardedInvh);
+                    Object[] rewardsArray = rewards.toArray();
+                    for (int i = 0; i < rewardsArray.length; i++) {
+//                        String rewardString = ((MoPubReward) rewardsArray[i]).getLabel();
+//                        Log.wtf("TAG", rewardString);
+                        selectedReward = ((MoPubReward) rewardsArray[i]);
+
+                    }
+                    if (selectedReward!=null){
+                        MoPubRewardedVideos.selectReward(mopubRewardedInvh,selectedReward);
+                    }
+                }
+                Toast.makeText(c, "Rewarded Load Success", Toast.LENGTH_SHORT).show();            }
 
             @Override
             public void onRewardedVideoLoadFailure(@NonNull String adUnitId, @NonNull MoPubErrorCode errorCode) {
