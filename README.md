@@ -9,4 +9,4 @@ Created with advertisers and publishers in mind, the Mobfox Demo App lets you ch
 * Tap the load button and see your live ads.
 * In case of ad load failure the error message will be displayed.
 
-**Note:** In order to test MoPub/AdMob ads enter the AdUnit ID provided by that network.
+**Note:** In order to test **MoPub/AdMob** ads enter the **AdUnit ID** provided by that network.
