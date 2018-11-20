@@ -31,7 +31,7 @@ You can also display an ad from a specific URL.
 * Enter the desired creative URL address or use the QR scanner.
 * Tap the "Load" button.
 
-### Possible Errors And Solutions:
+### Possible Errors & Solutions:
 ***
 - "**no fill**" - Meaning that there were no demand for that request. 
 could be caused by a low fill rate at your geo location, too high floor price, or other wrongly entered request params.
