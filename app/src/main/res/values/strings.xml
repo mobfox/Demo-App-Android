@@ -118,6 +118,7 @@
         <item>Banner</item>
         <item>Interstitial</item>
         <item>Rewarded</item>
+        <item>Native</item>
     </string-array>
 
     <!-- Strings related to barcode scanner -->

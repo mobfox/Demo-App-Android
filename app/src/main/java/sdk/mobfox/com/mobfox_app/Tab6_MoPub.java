@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +31,12 @@ import com.mopub.mobileads.MoPubRewardedVideo;
 import com.mopub.mobileads.MoPubRewardedVideoListener;
 import com.mopub.mobileads.MoPubRewardedVideos;
 import com.mopub.mobileads.MoPubView;
+import com.mopub.nativeads.AdapterHelper;
+import com.mopub.nativeads.MoPubNative;
+import com.mopub.nativeads.MoPubStaticNativeAdRenderer;
+import com.mopub.nativeads.NativeAd;
+import com.mopub.nativeads.NativeErrorCode;
+import com.mopub.nativeads.ViewBinder;
 
 import java.util.Set;
 
@@ -41,15 +49,26 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
     Context c;
     int adType;
 
+    private final String TAG = this.getClass().getName();
+
+
     MoPubView.BannerAdListener mBannerListener;
     MoPubInterstitial.InterstitialAdListener mInterstitialListener;
     MoPubReward selectedReward;
+    MoPubNative moPubNative;
+    MoPubNative.MoPubNativeNetworkListener moPubNativeNetworkListener;
+    ViewBinder viewBinder;
+    AdapterHelper adapterHelper;
+    private ConstraintLayout nativeAdView;
+    private NativeAd.MoPubNativeEventListener moPubNativeEventListener;
 
 
     private static final int BARCODE_READER_REQUEST_CODE = 1;
     private static String mopubBannerInvh = "4ad212b1d0104c5998b288e7a8e35967";
     final String mopubRewardedInvh = "005491feb31848a0ae7b9daf4a46c701";
-    String mopubInterstitialInvh  = "3fd85a3e7a9d43ea993360a2536b7bbd";
+    String mopubInterstitialInvh = "3fd85a3e7a9d43ea993360a2536b7bbd";
+//    String mopubNativeInvh = "b146b367940a4c6da94e8143fb4b66e4";
+//    String mopubNativeInvh = "9c2c31525cb64ded9f30860bcb4e2ea8";
 
     public TextView logText;
     public EditText invhText, floorText;
@@ -63,15 +82,17 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
 
         c = getApplicationContext();
 
-        floorText   = findViewById(R.id.floor_etext);
-        logText     = findViewById(R.id.logText);
-        invhText    = findViewById(R.id.invhText);
-        loadBtn     = findViewById(R.id.load_btn);
-        qrcode      = findViewById(R.id.qrcode);
+        floorText = findViewById(R.id.floor_etext);
+        logText = findViewById(R.id.logText);
+        invhText = findViewById(R.id.invhText);
+        loadBtn = findViewById(R.id.load_btn);
+        qrcode = findViewById(R.id.qrcode);
         moPubBanner = findViewById(R.id.mopubview);
         progressBar = findViewById(R.id.mpProgressBar);
 
         progressBar.setVisibility(View.GONE);
+
+        nativeAdView = findViewById(R.id.mopubadview);
 
 
         Spinner sizeSpinner = findViewById(R.id.mp_spinner);
@@ -84,15 +105,39 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
 
         invhText.setText(mopubBannerInvh);
 
-        if (!MoPub.isSdkInitialized()){
+        //init mopub sdk
+        if (!MoPub.isSdkInitialized()) {
             SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(mopubBannerInvh)
                     .build();
-            MoPub.initializeSdk(this,sdkConfiguration, initSdkListener());
+            MoPub.initializeSdk(this, sdkConfiguration, initSdkListener());
         }
 
 
+        mInterstitial = new MoPubInterstitial(this, mopubInterstitialInvh);
 
-        mInterstitial = new MoPubInterstitial(this,mopubInterstitialInvh);
+        //mopub native view binder
+        viewBinder = new ViewBinder.Builder(R.layout.mopub_native_item)
+                .mainImageId(R.id.native_main_image)
+                .iconImageId(R.id.native_icon_image)
+                .titleId(R.id.native_title)
+                .textId(R.id.native_text)
+                .privacyInformationIconImageId(R.id.native_privacy_information_icon_image)
+                .build();
+
+
+        //mopub native event listener
+        moPubNativeEventListener = new NativeAd.MoPubNativeEventListener() {
+            @Override
+            public void onImpression(View view) {
+                Log.d(TAG, "onImpression");
+            }
+
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick");
+
+            }
+        };
 
 
         //////////// mopub banner listener
@@ -174,8 +219,8 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
                 progressBar.setVisibility(View.GONE);
                 Set<MoPubReward> rewards;
 
-                if (MoPubRewardedVideos.getAvailableRewards(mopubRewardedInvh)!=null){
-                    rewards =  MoPubRewardedVideos.getAvailableRewards(mopubRewardedInvh);
+                if (MoPubRewardedVideos.getAvailableRewards(mopubRewardedInvh) != null) {
+                    rewards = MoPubRewardedVideos.getAvailableRewards(mopubRewardedInvh);
                     Object[] rewardsArray = rewards.toArray();
                     for (int i = 0; i < rewardsArray.length; i++) {
 //                        String rewardString = ((MoPubReward) rewardsArray[i]).getLabel();
@@ -183,11 +228,12 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
                         selectedReward = ((MoPubReward) rewardsArray[i]);
 
                     }
-                    if (selectedReward!=null){
-                        MoPubRewardedVideos.selectReward(mopubRewardedInvh,selectedReward);
+                    if (selectedReward != null) {
+                        MoPubRewardedVideos.selectReward(mopubRewardedInvh, selectedReward);
                     }
                 }
-                Toast.makeText(c, "Rewarded Load Success", Toast.LENGTH_SHORT).show();            }
+                Toast.makeText(c, "Rewarded Load Success", Toast.LENGTH_SHORT).show();
+            }
 
             @Override
             public void onRewardedVideoLoadFailure(@NonNull String adUnitId, @NonNull MoPubErrorCode errorCode) {
@@ -230,6 +276,33 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
         MoPubRewardedVideos.setRewardedVideoListener(moPubRewardedVideoListener);
 
 
+        //////////// mopub native network listener
+        moPubNativeNetworkListener = new MoPubNative.MoPubNativeNetworkListener() {
+            @Override
+            public void onNativeLoad(NativeAd nativeAd) {
+
+                progressBar.setVisibility(View.GONE);
+                Log.d("TAG", "Native loaded");
+                View v = adapterHelper.getAdView(null, nativeAdView, nativeAd, new ViewBinder.Builder(0).build());
+                if (v != null) {
+                    nativeAdView.removeView(v);
+                }
+                nativeAd.setMoPubNativeEventListener(moPubNativeEventListener);
+                nativeAdView.addView(v);
+
+            }
+
+            @Override
+            public void onNativeFail(NativeErrorCode errorCode) {
+                Log.d("TAG", "Native failed to load - " + errorCode.toString());
+
+            }
+        };
+        moPubNative = new MoPubNative(c, "23a183fb7dd4469384aaaf7d53f035f0", moPubNativeNetworkListener);
+
+        Log.d("TAG", "TAG");
+
+
         qrcode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -259,11 +332,18 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
                     case 2:
                         if (MoPubRewardedVideos.hasRewardedVideo(mopubRewardedInvh)) {
                             MoPubRewardedVideos.showRewardedVideo(mopubRewardedInvh);
-                        }else {
+                        } else {
                             MoPubRewardedVideos.loadRewardedVideo(mopubRewardedInvh);
-                            Toast.makeText(c,"Rewarded video is not ready !",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(c, "Rewarded video is not ready !", Toast.LENGTH_SHORT).show();
                         }
                         break;
+                    case 3:
+
+                        adapterHelper = new AdapterHelper(c, 0, 3);
+                        MoPubStaticNativeAdRenderer moPubStaticNativeAdRenderer = new MoPubStaticNativeAdRenderer(viewBinder);
+                        moPubNative.registerAdRenderer(moPubStaticNativeAdRenderer);
+                        moPubNative.makeRequest();
+
                 }
 
 
@@ -286,8 +366,7 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
                     invhText.setText(barcode.displayValue);
                 }
             }
-        }
-        else super.onActivityResult(requestCode, resultCode, data);
+        } else super.onActivityResult(requestCode, resultCode, data);
     }
 
     private SdkInitializationListener initSdkListener() {
@@ -323,6 +402,10 @@ public class Tab6_MoPub extends Activity implements AdapterView.OnItemSelectedLi
                 MoPubRewardedVideos.loadRewardedVideo(mopubRewardedInvh);
                 Toast.makeText(c, "Please wait until video is loaded.", Toast.LENGTH_SHORT).show();
                 adType = 2;
+                break;
+            case "Native":
+                adType = 3;
+                break;
         }
     }
 
