@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-AdMob-Adapter-sdk_core_demoapp-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-AdMob-Adapter-sdk_core_demoapp-SNAPSHOT.aar/f3999f2a1f6f53610a3ee5f126eb4e83/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-AdMob-Adapter-sdk_core_demoapp-SNAPSHOT.aar/f3999f2a1f6f53610a3ee5f126eb4e83/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

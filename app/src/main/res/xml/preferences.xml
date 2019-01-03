@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--<PreferenceCategory-->
+        <!--android:key="domain_category"-->
+        <!--android:title="Server">-->
+
+        <EditTextPreference
+            android:dialogTitle="Server"
+            android:dialogMessage="Server Address"
+            android:inputType="textWebEditText"
+            android:key="domain"
+            android:title="Server"
+            android:summary="https://sdk.starbolt.io">
+        </EditTextPreference>
+
+    <!--</PreferenceCategory>-->
+
+</PreferenceScreen>
