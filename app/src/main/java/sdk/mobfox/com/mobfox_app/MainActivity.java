@@ -89,10 +89,10 @@ public class MainActivity extends AppCompatActivity {
         if (sharedPreferences !=null){
             String servrStr = sharedPreferences.getString("domain","");
             if (!servrStr.isEmpty()){
-                Constants.TAG_SERVER = servrStr +"/";
+                //Constants.TAG_SERVER = servrStr +"/";
                 //Toast.makeText(getApplicationContext(),servrStr,Toast.LENGTH_SHORT).show();
             } else {
-                Constants.TAG_SERVER = "https://sdk.starbolt.io/";
+                //Constants.TAG_SERVER = "https://sdk.starbolt.io/";
             }
 
         }
