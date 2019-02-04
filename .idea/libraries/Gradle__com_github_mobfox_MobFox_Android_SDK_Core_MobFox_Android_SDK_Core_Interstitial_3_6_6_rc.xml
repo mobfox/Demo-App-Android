@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core-Interstitial-3.6.6_rc">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Core-Interstitial-3.6.6_rc.aar/c8ba3a4ff5be21bbf4e2f9e8917bd2d2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/MobFox-Android-SDK-Core-Interstitial-3.6.6_rc.aar/c8ba3a4ff5be21bbf4e2f9e8917bd2d2/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
