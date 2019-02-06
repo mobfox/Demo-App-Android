@@ -89,7 +89,7 @@ public class Tab1_320x50 extends Activity implements AdapterView.OnItemSelectedL
         floorText     = findViewById(R.id.floor_etext);
         logText       = findViewById(R.id.logText);
         invhText      = findViewById(R.id.invhText);
-        loadBtn       = findViewById(R.id.load_btn);
+        loadBtn       = findViewById(R.id.load_native_btn);
         qrcode        = findViewById(R.id.qrcode);
         view          = findViewById(R.id.banner_container);
         progressBar   = findViewById(R.id.mfBannerProgressBar);

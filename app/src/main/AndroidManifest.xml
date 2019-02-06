@@ -42,6 +42,9 @@
             android:name=".Tab3_300x250"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".Tab5_Native"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
@@ -67,10 +70,10 @@
             android:name="com.mopub.common.privacy.ConsentDialogActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity
-            android:name=".Tab5_AdMob"
+            android:name=".Tab6_AdMob"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Tab6_MoPub"
+            android:name=".Tab7_MoPub"
             android:screenOrientation="portrait" />
         <activity android:name=".AboutActivity"></activity>
     </application>

@@ -34,7 +34,7 @@
         android:id="@+id/invhText"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/load_btn"
+        android:layout_above="@+id/load_native_btn"
         android:layout_alignStart="@+id/or_divider"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
@@ -57,7 +57,7 @@
 
 
     <Button
-        android:id="@+id/load_btn"
+        android:id="@+id/load_native_btn"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
@@ -112,6 +112,7 @@
         android:background="@drawable/linedivider"
         android:paddingTop="5dp"
         android:text="OR"
+        android:gravity="center"
         android:textAlignment="center"
         android:textColor="#3ca6ff"
         app:layout_constraintBottom_toBottomOf="parent"

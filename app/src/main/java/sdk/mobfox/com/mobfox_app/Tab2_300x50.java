@@ -8,12 +8,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -62,7 +60,7 @@ public class Tab2_300x50 extends Activity implements AdapterView.OnItemSelectedL
         floorText     = findViewById(R.id.floor_etext);
         logText       = findViewById(R.id.logText);
         invhText      = findViewById(R.id.invhText);
-        loadBtn       = findViewById(R.id.load_btn);
+        loadBtn       = findViewById(R.id.load_native_btn);
         qrcode        = findViewById(R.id.qrcode);
         view          = findViewById(R.id.banner_container300x50);
         progressBar   = findViewById(R.id.mfBanner300x50PB);

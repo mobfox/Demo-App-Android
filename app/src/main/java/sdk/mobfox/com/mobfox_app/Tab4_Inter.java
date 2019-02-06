@@ -74,7 +74,7 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
         logText     = findViewById(R.id.logText);
         floorText   = findViewById(R.id.floor_etext);
         invhText    = findViewById(R.id.invhText);
-        load        = findViewById(R.id.load_btn);
+        load        = findViewById(R.id.load_native_btn);
         videoSwitch = findViewById(R.id.video_switch);
         progressBar = findViewById(R.id.mfBannerInterPB);
 

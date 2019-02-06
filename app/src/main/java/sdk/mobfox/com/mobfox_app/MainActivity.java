@@ -17,8 +17,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.mobfox.sdk.constants.Constants;
-
 public class MainActivity extends AppCompatActivity {
 
     /**
@@ -157,11 +155,14 @@ public class MainActivity extends AppCompatActivity {
                     Tab4_Inter_View tab4InterView = new Tab4_Inter_View();
                     return tab4InterView;
                 case 4:
-                    Tab5_AdMob_View tab5_adMob_view = new Tab5_AdMob_View();
-                    return tab5_adMob_view;
+                    Tab5_Native_View tab5_native_view = new Tab5_Native_View();
+                    return tab5_native_view;
                 case 5:
-                    Tab6_MoPub_View tab6_moPub_view = new Tab6_MoPub_View();
-                    return tab6_moPub_view;
+                    Tab6_AdMob_View tab6_adMob_view = new Tab6_AdMob_View();
+                    return tab6_adMob_view;
+                case 6:
+                    Tab7_MoPub_View tab7_moPub_view = new Tab7_MoPub_View();
+                    return tab7_moPub_view;
                 default:
                     return null;
             }
@@ -170,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 6;
+            return 7;
         }
     }
 
