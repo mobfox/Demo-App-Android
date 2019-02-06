@@ -27,7 +27,7 @@ import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.vision.barcode.Barcode;
-//import com.mobfox.adapter.MobFoxAdapter;
+import com.mobfox.adapter.MobFoxAdapter;
 import com.mopub.mobileads.MoPubRewardedVideos;
 
 import sdk.mobfox.com.mobfox_app.barcode.BarcodeCaptureActivity;
@@ -232,34 +232,34 @@ public class Tab5_AdMob extends Activity implements AdapterView.OnItemSelectedLi
 
                 switch (adType) {
                     case 0:
-//                        admobBannerInvh = invhText.getText().toString();
-//
-//                        admobBanner = new AdView(c);
-//                        admobBanner.setAdSize(AdSize.BANNER);
-//                        admobBanner.setAdUnitId(admobBannerInvh);
-//
-//                        admobBanner.setAdListener(admobBannerListener);
-//                        AdRequest adRequestBanner = new AdRequest.Builder()
-//                                .addNetworkExtrasBundle(MobFoxAdapter.class, bundle)
-//                                .build();
-//                        admobBanner.loadAd(adRequestBanner);
-//
-//                        bannerContainer.addView(admobBanner);
+                        admobBannerInvh = invhText.getText().toString();
+
+                        admobBanner = new AdView(c);
+                        admobBanner.setAdSize(AdSize.BANNER);
+                        admobBanner.setAdUnitId(admobBannerInvh);
+
+                        admobBanner.setAdListener(admobBannerListener);
+                        AdRequest adRequestBanner = new AdRequest.Builder()
+                                .addNetworkExtrasBundle(MobFoxAdapter.class, bundle)
+                                .build();
+                        admobBanner.loadAd(adRequestBanner);
+
+                        bannerContainer.addView(admobBanner);
                         break;
                     case 1:
-//                        mInterstitialAd.setAdListener(admobInterstitialListener);
-//                        AdRequest adRequestInterstitial = new AdRequest.Builder()
-//                                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
-//                                .addNetworkExtrasBundle(MobFoxAdapter.class, bundle)
-//                                .build();
-//                        mInterstitialAd.loadAd(adRequestInterstitial);
+                        mInterstitialAd.setAdListener(admobInterstitialListener);
+                        AdRequest adRequestInterstitial = new AdRequest.Builder()
+                                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+                                .addNetworkExtrasBundle(MobFoxAdapter.class, bundle)
+                                .build();
+                        mInterstitialAd.loadAd(adRequestInterstitial);
                         break;
                     case 2:
-//                        mRewardedAd = MobileAds.getRewardedVideoAdInstance(self);
-//                        mRewardedAd.setRewardedVideoAdListener(admobRewardedListener);
-//                        mRewardedAd.loadAd(admobRewardedInvh, new AdRequest.Builder()
-//                                .addNetworkExtrasBundle(MobFoxAdapter.class, bundle)
-//                                .build());
+                        mRewardedAd = MobileAds.getRewardedVideoAdInstance(self);
+                        mRewardedAd.setRewardedVideoAdListener(admobRewardedListener);
+                        mRewardedAd.loadAd(admobRewardedInvh, new AdRequest.Builder()
+                                .addNetworkExtrasBundle(MobFoxAdapter.class, bundle)
+                                .build());
                         break;
                 }
 

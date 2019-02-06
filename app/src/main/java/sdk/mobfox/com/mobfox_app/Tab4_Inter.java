@@ -207,7 +207,7 @@ public class Tab4_Inter extends Activity implements AdapterView.OnItemSelectedLi
 
 
     private SdkInitializationListener initSdkListener() {
-        return new SdkInitializationListener() {
+        return  new SdkInitializationListener() {
             @Override
             public void onInitializationFinished() {
                 // MoPub SDK initialized
