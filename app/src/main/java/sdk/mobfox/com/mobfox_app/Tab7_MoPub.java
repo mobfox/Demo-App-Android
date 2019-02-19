@@ -85,7 +85,7 @@ public class Tab7_MoPub extends Activity implements AdapterView.OnItemSelectedLi
         if (!MoPub.isSdkInitialized()){
             SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(mopubBannerInvh)
                     .build();
-            MoPub.initializeSdk(this,sdkConfiguration, initSdkListener());
+            MoPub.initializeSdk(c,sdkConfiguration, initSdkListener());
         }
 
 
@@ -241,6 +241,12 @@ public class Tab7_MoPub extends Activity implements AdapterView.OnItemSelectedLi
             public void onClick(View view) {
 
                 progressBar.setVisibility(View.VISIBLE);
+
+//                if (!MoPub.isSdkInitialized()){
+//                    SdkConfiguration sdkConfiguration = new SdkConfiguration.Builder(mopubBannerInvh)
+//                            .build();
+//                    MoPub.initializeSdk(c,sdkConfiguration, initSdkListener());
+//                }
 
                 mopubBannerInvh = invhText.getText().toString();
 
