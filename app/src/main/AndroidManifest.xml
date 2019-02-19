@@ -13,6 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6224828323195096~4390350360"/>
+
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"
