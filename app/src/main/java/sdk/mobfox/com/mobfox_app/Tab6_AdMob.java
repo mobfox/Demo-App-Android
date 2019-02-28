@@ -80,7 +80,7 @@ public class Tab6_AdMob extends Activity implements AdapterView.OnItemSelectedLi
 
         Spinner sizeSpinner = findViewById(R.id.am_spinner);
         ArrayAdapter<CharSequence> sizeSpinnerAdapter = ArrayAdapter.createFromResource(this,
-                R.array.adapter_sizes_array, android.R.layout.simple_spinner_item);
+                R.array.admob_adapter_sizes_array, android.R.layout.simple_spinner_item);
 
         sizeSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sizeSpinner.setAdapter(sizeSpinnerAdapter);

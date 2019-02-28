@@ -120,6 +120,11 @@
         <item>Rewarded</item>
     </string-array>
 
+    <string-array name="admob_adapter_sizes_array">
+        <item>Banner</item>
+        <item>Interstitial</item>
+    </string-array>
+
     <!-- Strings related to barcode scanner -->
     <string name="ok">OK</string>
     <string name="permission_camera_rationale">Access to the camera is needed for detection</string>

@@ -25,3 +25,9 @@
 
 -keep class com.mobfox.sdk. {*;}
 
+-keep class com.mobfox.sdk.utils.** {*;}
+
+-keep class com.mobfox.sdk.customevents.** {*;}
+
+-keep class com.danikula.videocache.** {*;}
+
