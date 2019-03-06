@@ -223,6 +223,7 @@ public class Tab6_AdMob extends Activity implements AdapterView.OnItemSelectedLi
             @Override
             public void onClick(View v) {
 
+                bannerContainer.removeAllViews();
                 progressBar.setVisibility(View.VISIBLE);
 
                 Bundle bundle = new Bundle();

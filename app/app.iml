@@ -96,6 +96,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant_run_merged_manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javac" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/lint_jar" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/merged_assets" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/merged_manifests" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/prebuild" />
@@ -123,7 +124,6 @@
     <orderEntry type="library" name="Gradle: com.google.android.exoplayer:exoplayer-core-2.8.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-vision-common-17.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-flags-16.0.1" level="project" />
-    <orderEntry type="library" name="Gradle: com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core-3.6.8_rc2" level="project" />
     <orderEntry type="library" name="Gradle: com.mopub.volley:mopub-volley:2.0.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:recyclerview-v7-27.1.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.squareup:javawriter:2.1.1@jar" level="project" />
@@ -137,14 +137,12 @@
     <orderEntry type="library" name="Gradle: com.mopub:libAvid-mopub:3.6.4@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-base-16.0.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: javax.inject:javax.inject:1@jar" level="project" />
-    <orderEntry type="library" name="Gradle: com.github.mobfox.MobFox-Android-SDK-Core:MAT-moat-mobile-app-kit-3.6.8_rc2" level="project" />
     <orderEntry type="library" name="Gradle: com.mopub:mopub-sdk-native-static-5.3.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-fragment-27.1.1" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.core:runtime-1.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-27.1.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:monitor-1.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:appcompat-v7-27.1.1" level="project" />
-    <orderEntry type="library" name="Gradle: com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-MoPub-Adapter-3.6.7" level="project" />
     <orderEntry type="library" name="Gradle: com.mopub:mopub-sdk-5.3.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.exoplayer:exoplayer-smoothstreaming-2.8.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-measurement-sdk-api-16.3.0" level="project" />
@@ -155,8 +153,9 @@
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime-1.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:transition-27.1.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:runner-1.0.2" level="project" />
-    <orderEntry type="library" name="Gradle: com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-AdMob-Adapter-3.6.7" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-annotations:27.1.1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.mobfox.MobFox-Android-SDK-Core:MAT-moat-mobile-app-kit-3.6.8" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-AdMob-Adapter-3.6.8" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:animated-vector-drawable-27.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.exoplayer:exoplayer-ui-2.8.2" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-ads-identifier-16.0.0" level="project" />
@@ -164,6 +163,7 @@
     <orderEntry type="library" name="Gradle: com.mopub:mopub-sdk-base-5.3.0" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:viewmodel-1.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-measurement-base-16.3.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-MoPub-Adapter-3.6.8" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-vector-drawable-27.1.1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-basement-16.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-core-utils-27.1.1" level="project" />
@@ -185,5 +185,6 @@
     <orderEntry type="library" name="Gradle: com.moat.analytics.mobile.mpub:moat-mobile-app-kit-2.4.5" level="project" />
     <orderEntry type="library" name="Gradle: com.mopub:mopub-sdk-banner-5.3.0" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.core:common:1.1.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.mobfox.MobFox-Android-SDK-Core:MobFox-Android-SDK-Core-3.6.8" level="project" />
   </component>
 </module>
