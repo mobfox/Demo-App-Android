@@ -114,9 +114,10 @@
         <item>Interstitial</item>
     </string-array>
 
-    <string-array name="adapter_sizes_array">
+    <string-array name="mopub_adapter_sizes_array">
         <item>Banner</item>
         <item>Interstitial</item>
+        <item>Native</item>
         <item>Rewarded</item>
     </string-array>
 
