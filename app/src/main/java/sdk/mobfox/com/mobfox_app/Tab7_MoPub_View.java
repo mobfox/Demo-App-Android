@@ -19,7 +19,7 @@ public class Tab7_MoPub_View extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab6_mopub_view, container, false);
+        View rootView = inflater.inflate(R.layout.tab7_mopub_view, container, false);
 
         c = getContext();
 

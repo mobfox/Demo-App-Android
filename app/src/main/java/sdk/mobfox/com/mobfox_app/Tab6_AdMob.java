@@ -61,7 +61,7 @@ public class Tab6_AdMob extends Activity implements AdapterView.OnItemSelectedLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tab5_admob);
+        setContentView(R.layout.tab6_admob);
 
         c = getApplicationContext();
         self = this;

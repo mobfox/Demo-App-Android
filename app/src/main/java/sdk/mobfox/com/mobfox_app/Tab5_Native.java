@@ -57,7 +57,7 @@ public class Tab5_Native extends Activity implements AdapterView.OnItemSelectedL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tab4_native);
+        setContentView(R.layout.tab5_native);
 
 
 

@@ -21,7 +21,7 @@ public class Tab5_Native_View extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab4_native_view, container, false);
+        View rootView = inflater.inflate(R.layout.tab5_native_view, container, false);
 
         c = getContext();
 

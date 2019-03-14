@@ -13,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +45,7 @@ public class Tab7_MoPub extends Activity implements AdapterView.OnItemSelectedLi
     private MoPubInterstitial mInterstitial;
     Context c;
     int adType;
+    View v;
 
     private final String TAG = this.getClass().getName();
 
@@ -73,7 +73,7 @@ public class Tab7_MoPub extends Activity implements AdapterView.OnItemSelectedLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tab6_mopub);
+        setContentView(R.layout.tab7_mopub);
 
         c = getApplicationContext();
 
@@ -142,10 +142,8 @@ public class Tab7_MoPub extends Activity implements AdapterView.OnItemSelectedLi
 
                 progressBar.setVisibility(View.GONE);
                 Log.d("TAG", "Native loaded");
-                View v = adapterHelper.getAdView(null, nativeAdView, nativeAd, new ViewBinder.Builder(0).build());
-//                if (v != null) {
-                    nativeAdView.removeAllViews();
-//                }
+                v = adapterHelper.getAdView(null, nativeAdView, nativeAd, new ViewBinder.Builder(0).build());
+
                 nativeAd.setMoPubNativeEventListener(moPubNativeEventListener);
                 nativeAdView.addView(v);
 
@@ -321,11 +319,19 @@ public class Tab7_MoPub extends Activity implements AdapterView.OnItemSelectedLi
 
                 mopubBannerInvh = invhText.getText().toString();
 
+                if (v != null) {
+                    nativeAdView.removeView(v);
+                }
 
                 switch (adType) {
                     case 0:
+                        nativeAdView.removeView(moPubBanner);
                         moPubBanner.setAdUnitId(mopubBannerInvh);
                         moPubBanner.setBannerAdListener(mBannerListener);
+                        if (MoPub.isSdkInitialized()) {
+                            moPubBanner.loadAd();
+                            nativeAdView.addView(moPubBanner);
+                        }
                         break;
                     case 1:
                         mInterstitial.setInterstitialAdListener(mInterstitialListener);
@@ -340,16 +346,13 @@ public class Tab7_MoPub extends Activity implements AdapterView.OnItemSelectedLi
                         }
                         break;
                     case 3:
+                        nativeAdView.removeView(moPubBanner);
                         adapterHelper = new AdapterHelper(c, 0, 3);
                         MoPubStaticNativeAdRenderer moPubStaticNativeAdRenderer = new MoPubStaticNativeAdRenderer(viewBinder);
                         moPubNative.registerAdRenderer(moPubStaticNativeAdRenderer);
                         moPubNative.makeRequest();
                 }
 
-
-                if (MoPub.isSdkInitialized()) {
-                    moPubBanner.loadAd();
-                }
             }
         });
 
@@ -382,8 +385,14 @@ public class Tab7_MoPub extends Activity implements AdapterView.OnItemSelectedLi
 
     @Override
     protected void onDestroy() {
+        if ( moPubBanner != null ){
+            moPubBanner.destroy();
+        }
+
+        if ( mInterstitial != null ){
+            mInterstitial.destroy();
+        }
         super.onDestroy();
-        moPubBanner.destroy();
     }
 
     @Override
