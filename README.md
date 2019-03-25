@@ -29,6 +29,12 @@ Created with advertisers and publishers in mind, the Mobfox Demo App lets you ch
 * Enter your MobFox inventory hash/creative URL address or use the QR scanner.
 * Tap the "Load" button.
 
+**AdMob/MoPub network adapters:**
+* Select the desired 'Ad Type'.
+* Enter your **AdMob/MoPub** AdUnit ID or use the QR scanner.
+* Tap the "Load" button.
+
+
 ### Possible Errors & Solutions:
 ***
 - "**no fill**" - Meaning that there were no demand for that request. 
