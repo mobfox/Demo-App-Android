@@ -13,7 +13,7 @@ Created with advertisers and publishers in mind, the Mobfox Demo App lets you ch
 
 **Note:** In order to test MoPub/AdMob ads enter the AdUnit ID provided by that network.
 
-**Banner (320x50/300x50/300x250):**
+**Banner:**
 * Select the 320x50/300x50/300x250 tab.
 * Enter your MobFox inventory hash/creative URL address or use the QR scanner.
 * Tap the "Load" button.
