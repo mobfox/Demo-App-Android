@@ -12,23 +12,21 @@ Created with advertisers and publishers in mind, the Mobfox Demo App lets you ch
 * In case of ad load failure the error message will be displayed.
 
 **Note:** In order to test MoPub/AdMob ads enter the AdUnit ID provided by that network.
-### URL Ads
-***
-You can also display an ad from a specific URL.
 
-**Banner:**
-* Select size - 320x50/300x50/300x250.
-* Enter the desired creative URL address or use the QR scanner.
+**Banner (320x50/300x50/300x250):**
+* Select the 320x50/300x50/300x250 tab.
+* Enter your MobFox inventory hash/creative URL address or use the QR scanner.
 * Tap the "Load" button.
 
 **Interstitial:**
-* Select size - 320x480.
-* Enter the desired creative URL address or use the QR scanner.
+* Select the 320x480 tab.
+* If you wish to display video check the Video switch.
+* Enter your MobFox inventory hash/creative URL address or use the QR scanner.
 * Tap the "Load" button.
 
-**VAST(video):**
-* Select size - 320x480.
-* Enter the desired creative URL address or use the QR scanner.
+**Native:**
+* Select the 'Native' tab.
+* Enter your MobFox inventory hash/creative URL address or use the QR scanner.
 * Tap the "Load" button.
 
 ### Possible Errors & Solutions:
